@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-
+//@WebServlet("/login")
 public class Login extends HttpServlet {
 			
 	/**
@@ -27,10 +27,10 @@ public class Login extends HttpServlet {
         System.out.println("username: " + username);
         System.out.println("password: " + password);
  
-        if(username == "user" && password=="pass") {
-        	response.sendRedirect("/welcomePage.jsp");
+        if((username.equals("username")) & (password.equals("password"))) {
+        	response.sendRedirect("welcomePage.jsp");
         }else {
-        	response.sendRedirect("/accessDenied.html");
+        	response.sendRedirect("accessDenied.html");
         }
         
          
