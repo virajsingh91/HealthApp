@@ -29,11 +29,12 @@ public class Login extends HttpServlet {
  
         if((username.equals("username")) & (password.equals("password"))) {
         	response.sendRedirect("welcomePage.jsp");
+        }        
+        else if((username.equals("doctor")) & (password.equals("password"))) {
+        	response.sendRedirect("welcomePageDoctor.jsp");
         }else {
         	response.sendRedirect("accessDenied.html");
         }
-        
-         
     }			
 			
 }
