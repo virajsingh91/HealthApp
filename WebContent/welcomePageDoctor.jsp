@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Welcome Patient</title>
+<title>Welcome Doctor</title>
 
 <!-- source for navigation pane from w3 schools 
 source : https://www.w3schools.com/howto/howto_js_sidenav.asp -->
@@ -67,6 +67,12 @@ body {
 
 <p>Click on the element below to open the side navigation menu.</p>
 <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; MENU</span>
+
+<form method="post" action="Login">
+Username <input type="text" name="username"></input><br><br>
+Password <input type="password" name="password"></input><br><br>
+<input type="submit" value="Submit">
+</form>
 
 <script>
 function openNav() {
