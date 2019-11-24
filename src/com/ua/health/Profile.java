@@ -1,12 +1,20 @@
 package com.ua.health;
 
-import java.sql.*;
-import oracle.jdbc.driver.*;
-import oracle.sql.*;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
-public class Profile {
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
-	public static void main(String[] args) {
+public class Profile extends HttpServlet {
+
+	protected void doPost(HttpServletRequest request,
+            HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		try {
 		Connect c = null;
@@ -19,6 +27,7 @@ public class Profile {
         while(rs.next()){
             System.out.println(rs.getString("firstname"));
             System.out.println(rs.getString("lastname"));
+            
         }
         rs.close();
         con.close();
