@@ -12,6 +12,9 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
+<%String name = (String)request.getAttribute("fname"); %>
+<%= name%>
+
 <div class="container">
 	<div class="row">
 		<div class="col-md-3 ">
