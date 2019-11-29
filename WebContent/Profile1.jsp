@@ -116,8 +116,35 @@
 </html>
 =======
 <style>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #C9D6FF;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: Black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+  background-color: #fff;
+}
 body{
-    background: -webkit-linear-gradient(left, #3931af, #00c6ff);
+  background: #fff;
+  font-family: "Poppins", sans-serif;
+  height: 100vh;
+
 }
 .emp-profile{
     padding: 1%;
@@ -128,7 +155,23 @@ body{
 }
 /* .profile-img{
     text-align: center; */
+
+#formContent {
+  -webkit-border-radius: 10px 10px 10px 10px;
+  border-radius: 10px 10px 10px 10px;
+  background: #fff;
+  padding: 50px;
+  width: 7000px;
+  max-width: 450px;
+  position: relative;
+  padding: 50px;
+  -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+  box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+  text-align: center;
+  margin-top:50px;
+  
 }
+
 /* .profile-img img{
     width: 70%;
     height: 100%;
@@ -162,7 +205,10 @@ body{
     padding: 1%;
     font-weight: 600;
     color: #000;
+    background:#C9D6FF;
     cursor: pointer;
+    margin-top:50px;
+    
 }
 .proile-rating{
     font-size: 12px;
@@ -214,6 +260,16 @@ body{
 </style>
 </head>
 <body>
+<ul>
+  <li><a href="default.asp">Welcome : Mr Currim</a></li>
+    <li style="float:right"><a class="active" href="#about">Patient ID:78622</a></li>
+       
+<!-- 
+  <li><a href="contact.asp">Contact</a></li>
+  <li><a href="about.asp">About</a></li>  -->
+</ul>
+<div align="center";>
+<div id="formContent">
 <!-- <div class="container emp-profile">
  -->                <!-- <form method="post" >
                 <div class="row">
@@ -229,13 +285,13 @@ body{
  -->                    <div class="container emp-profile"
  >
 <!--                         <div class="profile-head">
- -->                                    <h5>
+ -->                                  <!--   <h5>
      
                                         Profile
                                     </h5>
                                     <h6>
                                         Patient ID :
-                                    </h6>
+                                    </h6> -->
 <!--                                     <p class="proile-rating">RANKINGS : <span>8/10</span></p>
  -->                            <!-- <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item">
@@ -454,8 +510,10 @@ body{
                         					align="center">
                         					</div>
                     					</div> -->
+                    					</div>
                     					<div  align="center">
                         				<input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
+                    					</div>
                     					</div>
 <!--                                     </div>
  -->                                <!-- </div> -->
