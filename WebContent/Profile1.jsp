@@ -5,7 +5,7 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
-<<<<<<< HEAD
+<%-- <<<<<<< HEAD
 <%String name = (String)request.getAttribute("fname"); %>
 <%= name%>
 
@@ -113,7 +113,7 @@
 	</div>
 </div>
 </body>
-</html>
+</html> --%>
 =======
 <style>
 ul {

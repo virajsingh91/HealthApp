@@ -17,10 +17,10 @@ body {
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 15px;
   color: #b9b9b9;
-  background-color: #e3e3e3;
+  background-color: #fff;
 }
 h4 {
-  color: #7ed321;
+  color: #C9D6FF;
 }
 input,
 input[type="radio"] + label,
@@ -44,11 +44,11 @@ input:focus {
   border-color: #64ac15;
 }
 input:focus + .input-icon i {
-  color: #7ed321;
+  color: #C9D6FF;
 }
-input:focus + .input-icon:after {
-  border-right-color: #7ed321;
-}
+/* input:focus + .input-icon:after {
+  border-right-color: #C9D6FF;
+} */
 input[type="radio"] {
   display: none;
 }
@@ -75,9 +75,10 @@ input[type="radio"]:checked + label,
 input:checked + label:before,
 select:focus,
 select:active {
-  background-color: #7ed321;
+  background-color: #C9D6FF;
   color: #fff;
-  border-color: #64ac15;
+  border-color:#C9D6FF;
+  ;
 }
 input[type="checkbox"] {
   display: none;
@@ -158,7 +159,7 @@ select option {
   text-align: center;
   pointer-events: none;
 }
-.input-group-icon .input-icon:after {
+/* .input-group-icon .input-icon:after {
   position: absolute;
   top: 0.6em;
   bottom: 0.6em;
@@ -171,7 +172,7 @@ select option {
   -o-transition: 0.35s ease-in-out;
   transition: 0.35s ease-in-out;
   transition: all 0.35s ease-in-out;
-}
+} */
 .input-group-icon .input-icon i {
   -webkit-transition: 0.35s ease-in-out;
   -moz-transition: 0.35s ease-in-out;
@@ -180,12 +181,28 @@ select option {
   transition: all 0.35s ease-in-out;
 }
 .container {
-  max-width: 38em;
+ /*  max-width: 38em;
   padding: 1em 3em 2em 3em;
   margin: 0em auto;
   background-color: #fff;
   border-radius: 4.2px;
-  box-shadow: 0px 3px 10px -2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 3px 10px -2px rgba(0, 0, 0, 0.2); */
+   -webkit-border-radius: 10px 10px 10px 10px;
+  border-radius: 10px 10px 10px 10px;
+  background: #fff;
+  padding: 50px;
+  width: 90%;
+  max-width: 450px;
+  position: relative;
+  padding: 50px;
+  -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+  box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+  text-align: center;
+  margin-top:100px;
+  margin-left:400px;
+  align:center;
+ /*  -webkit-text-stroke-width: 0.2px;
+   -webkit-text-stroke-color: black; */
 }
 .row {
   zoom: 1;
@@ -268,8 +285,8 @@ select option {
         </div>
       </div>
     </div>
-    <div class="row">
-      <!-- <h4>Payment Details</h4>
+<!--     <div class="row">
+ -->      <!-- <h4>Payment Details</h4>
       <div class="input-group">
         <input type="radio" name="payment-method" value="card" id="payment-method-card" checked="true"/>
         <label for="payment-method-card"><span><i class="fa fa-cc-visa"></i>Credit Card</span></label>
