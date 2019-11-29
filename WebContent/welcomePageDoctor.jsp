@@ -59,7 +59,10 @@ body {
 <h1>WELCOME TO UA HEALTH OTG - GOD BLESS YOU</h1>
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="#">Profile</a>
+  <form method="post" action="Profile">
+  <input type="submit" value="Profile">
+  </form>
+<!--   <a href="#">Profile</a> -->
   <a href="#">Case History</a>
   <a href="#">Reports</a>
   <a href="#">Appointments</a>

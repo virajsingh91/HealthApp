@@ -13,11 +13,11 @@ import javax.servlet.http.HttpServletResponse;
 
 public class Profile extends HttpServlet {
 
-	protected void doGet(HttpServletRequest request,
+	protected void doPost(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		try {
-		Connect c = null;
+		Connect c = new Connect();
 		Connection con;
 		con = c.JDBCConnection();
 		String query ="";

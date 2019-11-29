@@ -7,9 +7,10 @@ public class Connect {
 
 	public Connection JDBCConnection() {
 		// TODO Auto-generated method stub
+		Connection con=null;
 		try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
-            Connection con = DriverManager.
+            con = DriverManager.
                 getConnection("jdbc:oracle:thin:@128.196.27.219:1521:MIS00"
                     ,"bitsplease","BLD46d:h4");
             
@@ -22,7 +23,7 @@ public class Connect {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-		return null;
+		return con;
 	}
 
 }
