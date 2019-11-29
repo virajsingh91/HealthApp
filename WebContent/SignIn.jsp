@@ -6,6 +6,31 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <style>
 
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #C9D6FF;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: Black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+  background-color: #fff;
+}
+
 /* BASIC */
 
 html {
@@ -60,12 +85,13 @@ h2 {
   -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
   box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
   text-align: center;
+  margin-top:100px;
 }
 
 #formFooter {
-  background-color: #f6f6f6;
-  border-top: 1px solid #dce8f1;
-  padding: 25px;
+  background-color: #fff;
+/*   border-top: 1px solid #dce8f1;
+ */  padding: 25px;
   text-align: center;
   -webkit-border-radius: 0 0 10px 10px;
   border-radius: 0 0 10px 10px;
@@ -89,9 +115,9 @@ h2.active {
 /* FORM TYPOGRAPHY*/
 
 input[type=button], input[type=submit], input[type=reset]  {
-  background-color: #56baed;
+  background-color: #C9D6FF;
   border: none;
-  color: white;
+  color: black;
   padding: 15px 80px;
   text-align: center;
   text-decoration: none;
@@ -111,7 +137,7 @@ input[type=button], input[type=submit], input[type=reset]  {
 }
 
 input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
-  background-color: #39ace7;
+  background-color: #C9D6FF;
 }
 
 input[type=button]:active, input[type=submit]:active, input[type=reset]:active  {
@@ -197,7 +223,7 @@ input[type=text]:placeholder {
 @-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
 @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
 
-.fadeIn {
+/* .fadeIn {
   opacity:0;
   -webkit-animation:fadeIn ease-in 1;
   -moz-animation:fadeIn ease-in 1;
@@ -210,9 +236,9 @@ input[type=text]:placeholder {
   -webkit-animation-duration:1s;
   -moz-animation-duration:1s;
   animation-duration:1s;
-}
+} */
 
-.fadeIn.first {
+/* .fadeIn.first {
   -webkit-animation-delay: 0.4s;
   -moz-animation-delay: 0.4s;
   animation-delay: 0.4s;
@@ -234,17 +260,17 @@ input[type=text]:placeholder {
   -webkit-animation-delay: 1s;
   -moz-animation-delay: 1s;
   animation-delay: 1s;
-}
+} */
 
 /* Simple CSS3 Fade-in Animation */
 .underlineHover:after {
   display: block;
-  left: 0;
+   left: 0;
   bottom: -10px;
   width: 0;
-  height: 2px;
-  background-color: #56baed;
-  content: "";
+  height: 2px; 
+   background-color: #56baed;
+ content: "";
   transition: width 0.2s;
 }
 
@@ -271,10 +297,15 @@ input[type=text]:placeholder {
 </style>
 </head>
 <body>
-
+<ul>
+  <li><a href="default.asp">UA Health Care</a></li>
+<!--   <li><a href="news.asp">News</a></li>
+  <li><a href="contact.asp">Contact</a></li>
+  <li><a href="about.asp">About</a></li> -->
+</ul>
 <!------ Include the above in your HEAD tag ---------->
 
-<div class="wrapper fadeInDown">
+<div align="center";> <!-- class="wrapper fadeInDown" -->
   <div id="formContent">
     <!-- Tabs Titles -->
 
