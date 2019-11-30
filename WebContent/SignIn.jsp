@@ -1,4 +1,4 @@
-
+<!-- source-https://bootsnipp.com/snippets/dldxB -->
 <html>
 <head>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -8,10 +8,16 @@
 
 ul {
   list-style-type: none;
+  top:0;
   margin: 0;
   padding: 0;
+  width:100%;
+  position: fixed;
   overflow: hidden;
-  background-color: #C9D6FF;
+  background-color: #000046;
+  text-transform: uppercase;
+ 
+  
 }
 
 li {
@@ -20,7 +26,7 @@ li {
 
 li a {
   display: block;
-  color: Black;
+  color: white;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
@@ -28,14 +34,15 @@ li a {
 
 /* Change the link color to #111 (black) on hover */
 li a:hover {
-  background-color: #fff;
+  background-color: #000046;
+  ;
 }
 
 /* BASIC */
 
-html {
+/* html {
   background-color: #56baed;
-}
+} */
 
 body {
   font-family: "Poppins", sans-serif;
@@ -43,20 +50,23 @@ body {
 }
 
 a {
-  color: #92badd;
+  color:#000046;
   display:inline-block;
   text-decoration: none;
   font-weight: 400;
+  
 }
+
 
 h2 {
   text-align: center;
-  font-size: 16px;
+  font-size: 26px;
   font-weight: 600;
   text-transform: uppercase;
   display:inline-block;
-  margin: 40px 8px 10px 8px; 
-  color: #cccccc;
+  margin: 10px;
+  align:center; 
+  color: #fff;
 }
 
 
@@ -86,12 +96,13 @@ h2 {
   box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
   text-align: center;
   margin-top:100px;
+  
 }
 
 #formFooter {
   background-color: #fff;
 /*   border-top: 1px solid #dce8f1;
- */  padding: 25px;
+ */  padding: 5px;
   text-align: center;
   -webkit-border-radius: 0 0 10px 10px;
   border-radius: 0 0 10px 10px;
@@ -107,7 +118,7 @@ h2.inactive {
 
 h2.active {
   color: #0d0d0d;
-  border-bottom: 2px solid #5fbae9;
+  border: 2px solid #000046;
 }
 
 
@@ -115,9 +126,9 @@ h2.active {
 /* FORM TYPOGRAPHY*/
 
 input[type=button], input[type=submit], input[type=reset]  {
-  background-color: #C9D6FF;
-  border: none;
-  color: black;
+  background-color: #000046;
+  border: 2px solid #000046;
+  color: white;
   padding: 15px 80px;
   text-align: center;
   text-decoration: none;
@@ -137,7 +148,7 @@ input[type=button], input[type=submit], input[type=reset]  {
 }
 
 input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
-  background-color: #C9D6FF;
+  background-color: #000046;
 }
 
 input[type=button]:active, input[type=submit]:active, input[type=reset]:active  {
@@ -150,8 +161,8 @@ input[type=button]:active, input[type=submit]:active, input[type=reset]:active  
 
 input[type=text] {
   background-color: #f6f6f6;
-  border: none;
-  color: #0d0d0d;
+/*   border: #000046;
+ */  color: #000046;
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
@@ -160,22 +171,40 @@ input[type=text] {
   margin: 5px;
   width: 85%;
   border: 2px solid #f6f6f6;
-  -webkit-transition: all 0.5s ease-in-out;
+  
+  
+ /*  -webkit-transition: all 0.5s ease-in-out;
   -moz-transition: all 0.5s ease-in-out;
   -ms-transition: all 0.5s ease-in-out;
   -o-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out; */
   -webkit-border-radius: 5px 5px 5px 5px;
   border-radius: 5px 5px 5px 5px;
 }
+input[type=password] {
+  background-color: #f6f6f6;
+/*   border: #000046;
+ */  color: #000046;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 5px;
+  width: 85%;
+     border: 2px solid #f6f6f6;
 
 input[type=text]:focus {
   background-color: #fff;
-  border-bottom: 2px solid #5fbae9;
+  border: 2px solid #000046;
+}
+nput[type=password]:focus {
+  background-color: #fff;
+  border: 2px solid #000046;
 }
 
 input[type=text]:placeholder {
-  color: #cccccc;
+  color: #000;
 }
 
 
@@ -183,16 +212,16 @@ input[type=text]:placeholder {
 /* ANIMATIONS */
 
 /* Simple CSS3 Fade-in-down Animation */
-.fadeInDown {
+/* .fadeInDown {
   -webkit-animation-name: fadeInDown;
   animation-name: fadeInDown;
   -webkit-animation-duration: 1s;
   animation-duration: 1s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
-}
+} */
 
-@-webkit-keyframes fadeInDown {
+/* @-webkit-keyframes fadeInDown {
   0% {
     opacity: 0;
     -webkit-transform: translate3d(0, -100%, 0);
@@ -216,7 +245,7 @@ input[type=text]:placeholder {
     -webkit-transform: none;
     transform: none;
   }
-}
+} */
 
 /* Simple CSS3 Fade-in Animation */
 @-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
@@ -269,18 +298,18 @@ input[type=text]:placeholder {
   bottom: -10px;
   width: 0;
   height: 2px; 
-   background-color: #56baed;
+   background-color: #000046;
  content: "";
   transition: width 0.2s;
 }
 
 .underlineHover:hover {
-  color: #0d0d0d;
+  color: #000046;
 }
 
-.underlineHover:hover:after{
+/* .underlineHover:hover:after{
   width: 100%;
-}
+} */
 
 
 
@@ -295,17 +324,16 @@ input[type=text]:placeholder {
 }
 
 </style>
+<ul>
+  <li><h2>UA Health Care</h2></li>
+</ul>
 </head>
 <body>
-<ul>
-  <li><a href="default.asp">UA Health Care</a></li>
-<!--   <li><a href="news.asp">News</a></li>
-  <li><a href="contact.asp">Contact</a></li>
-  <li><a href="about.asp">About</a></li> -->
-</ul>
+
 <!------ Include the above in your HEAD tag ---------->
 
 <div align="center";> <!-- class="wrapper fadeInDown" -->
+
   <div id="formContent">
     <!-- Tabs Titles -->
 
@@ -316,14 +344,17 @@ input[type=text]:placeholder {
 
     <!-- Login Form -->
     <form>
-      <input type="text" id="login" class="fadeIn second" name="login" placeholder="login">
-      <input type="text" id="password" class="fadeIn third" name="login" placeholder="password">
-      <input type="submit" class="fadeIn fourth" value="Log In">
+      <input type="text" class="focus"id="login"name="login" placeholder="Username">
+      <input type="password" id="password"  name="login" placeholder="Password"><br>
+      <input type="submit" value="Log In" ><!-- top-margin="50px -->
     </form>
 
     <!-- Remind Passowrd -->
     <div id="formFooter">
       <a class="underlineHover" href="#">Forgot Password?</a>
+    </div>
+    <div id="formFooter">
+      <a class="underlineHover" href="#">Don't have an account yet? Sign Up</a>
     </div>
 
   </div>
