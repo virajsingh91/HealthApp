@@ -239,28 +239,36 @@ select option {
 }
 </Style>
 <body>
+<%
+String text = (String)request.getAttribute("text"); 
+%>
+<%= text %>
 <div class="container">
-  <form>
+  <form method="post" action="SignUp">
     <div class="row">
       <h4>Account</h4>
 		<div class="input-group input-group-icon">
-        <input type="text" placeholder="SID"/>
+        <input type="text" placeholder="SID" name="sid"/>
         <div class="input-icon"><i class="fa fa-user"></i></div>
-      </div>      
+      </div>  
       <div class="input-group input-group-icon">
+        <input type="text" placeholder="username" name="username"/>
+        <div class="input-icon"><i class="fa fa-user"></i></div>
+      </div>    
+<!--       <div class="input-group input-group-icon">
         <input type="text" placeholder="Full Name"/>
         <div class="input-icon"><i class="fa fa-user"></i></div>
       </div>
       <div class="input-group input-group-icon">
         <input type="email" placeholder="Email Address"/>
         <div class="input-icon"><i class="fa fa-envelope"></i></div>
-      </div>
+      </div> -->
       <div class="input-group input-group-icon">
-        <input type="password" placeholder="Password"/>
+        <input type="password" placeholder="Password" name="password"/>
         <div class="input-icon"><i class="fa fa-key"></i></div>
       </div>
     </div>
-    <div class="row">
+<!--     <div class="row">
       <div class="col-half">
         <h4>Date of Birth</h4>
         <div class="input-group">
@@ -274,8 +282,8 @@ select option {
             <input type="text" placeholder="YYYY"/>
           </div>
         </div>
-      </div>
-      <div class="col-half">
+      </div> -->
+<!--       <div class="col-half">
         <h4>Gender</h4>
         <div class="input-group">
           <input type="radio" name="gender" value="male" id="gender-male"/>
@@ -283,7 +291,7 @@ select option {
           <input type="radio" name="gender" value="female" id="gender-female"/>
           <label for="gender-female">Female</label>
         </div>
-      </div>
+      </div> -->
     </div>
 <!--     <div class="row">
  -->      <!-- <h4>Payment Details</h4>
@@ -323,7 +331,12 @@ select option {
         <label for="terms">I accept the terms and conditions for signing up to this service, and hereby confirm I have read the privacy policy.</label>
       </div>
     </div>
-  </form>
+   </div>
+                    					<div  align="center">
+                        				<input type="submit" class="profile-edit-btn" name="btnAddMore" value="Sign Up"/>
+                    					</div>
+                    					</div>
+</form>
 </div>
 </body>
 </html>
