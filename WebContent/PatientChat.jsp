@@ -28,6 +28,21 @@ body {
   padding-top: 60px;
 }
 
+.sidenav input {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+  width:100%
+}
+
+.sidenav input:hover {
+  color: #0000ff;
+}
+
+
 .sidenav a {
   padding: 8px 8px 8px 32px;
   text-decoration: none;
@@ -38,10 +53,8 @@ body {
 }
 
 .sidenav a:hover {
-  color: #f1f1f1;
+  color: #0000ff;
 }
-
-
 .sidenav .closebtn {
   position: absolute;
   top: 0;
@@ -69,14 +82,18 @@ body {
  <input type="submit" value="Case History">
   </form>
 <!--   <a href="#">Case History</a> -->
-  <a href="#">Reports</a>
-  <a href="#">Appointments</a>
+   <form method="post" action="CheckAppointment">
+ <input type="submit" value="Book Appointment">
+  </form>
+
 </div>
 
-<p>Click on the element below to open the side navigation menu.</p>
 <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; MENU</span>
+<div style="float:right">
+<iframe src="http://192.168.0.15:3000" height="500" width="500" name="Patient"></iframe>
+</div>
 
-<iframe src="http://192.168.0.25:3000" height="500" width="500" name="Patient"></iframe>
+
 
 <script>
 function openNav() {

@@ -1,6 +1,8 @@
 package com.ua.health;
 
 import java.io.IOException;
+import java.net.Inet4Address;
+import java.net.InetAddress;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -33,7 +35,16 @@ public class Login extends HttpServlet {
        HttpSession session = request.getSession(true);
        session.setMaxInactiveInterval(5*60);
        //session.setAttribute("UserName", username);
-       
+       //InetAddress IP=InetAddress.getLocalHost();
+       String ip = Inet4Address.getLocalHost().getHostAddress();
+       System.out.println("My IP : " + ip);
+/*       Socket socket = new Socket();
+       socket.connect(new InetSocketAddress("google.com", 80));
+       System.out.println("My IP : ");
+       System.out.println( socket.getLocalAddress());*/
+/*      System.out.println("My IP : " + IP.toString());*/
+       request.setAttribute("localip",ip);
+       session.setAttribute("localip" , ip);
         String query="";
         String user="";
         String pass ="";

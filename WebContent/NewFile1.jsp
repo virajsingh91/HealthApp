@@ -62,11 +62,11 @@ a:hover{
 }
 h1 {
     font-weight:200;
-    color: #888888;
+    color: #172bbf;
     font-size:16pt;
     background: transparent url(../img/h1.png) no-repeat center left;
     padding-left:33px;
-    margin:7px 5px 8px 8px;
+    margin:3px 5px 4px 4px;
 }
 h4 {
     padding:1px;
@@ -143,7 +143,7 @@ form.register .infobox{
 }
 form.register legend
 {
-    color: #abda0f;
+    color: #172bbf;
     padding:2px;
     margin-left: 14px;
     font-weight:bold;
@@ -278,6 +278,59 @@ float:left;
 {
 float:right;
 }
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav input {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+  width:100%
+}
+
+.sidenav input:hover {
+  color: #0000ff;
+}
+
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #0000ff;
+}
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
     
     </style>
     <body>
@@ -286,7 +339,9 @@ float:right;
 <%
 String pid = (String)request.getAttribute("pid"); 
 String pname = (String)request.getAttribute("pname");
+String localip = (String)request.getAttribute("localip");
 
+String url = "http://" + localip + ":3000";
 String icdcodes[][] = new String[100][100];
 icdcodes = (String[][])request.getAttribute("icdcodes");
 int icdcodelength = (int)request.getAttribute("icdcodelength");
@@ -308,22 +363,42 @@ symptoms = (String[][])request.getAttribute("symptoms");
 int symptomlength = (int)request.getAttribute("symptomlength");
 
 %>
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <form method="post" action="ProfileDoctor" >
+  <input type="submit" value="Profile" disabled>
+  </form>
+<!--   <a href="#">Profile</a> -->
+ <form method="post" action="CaseHistory">
+ <input type="submit" value="Case History" disabled>
+  </form>
+<!--   <a href="#">Case History</a> -->
+   <form method="post" action="CheckAppointmentSchedule">
+ <input type="submit" value="Appointments" disabled>
+  </form>
+
+</div>
+
+<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; MENU</span>
 <div class="container">
 <div class="row">
         <div class="left_pane col-lg-6">
  <form method="post" class="register" action="CreateCase">
+ 
             <h1>Case Details</h1>
+           
+            
             <fieldset class="row1">
-                <legend>Patient Details
+     <legend>Patient Details
                 </legend>
-                <p>
+                
                     <label>Name
                     </label>
                     <input type="text" value="<%= pname %>" readonly/>
                     <label>Patient ID
                     </label>
                     <input type="text" value="<%= pid %>" readonly/>
-                </p><br></br>
+                <br></br>
                 <!-- <p>
                 <label class="combo-label">Symptoms</label>
     			<div id="checkboxSelectCombo" >
@@ -361,7 +436,7 @@ int symptomlength = (int)request.getAttribute("symptomlength");
 </div>
 </p> -->
 
-<p>
+
                     <label>Symptoms</label>
 <!-- <input type="text" class="long"/>
  -->             <select id = "myList" name = "symptoms">
@@ -376,9 +451,9 @@ int symptomlength = (int)request.getAttribute("symptomlength");
                     
                 <!-- </p>
                 <p> -->
-<fieldset >
+<p>
           <label for="bio">Notes:</label>
-          <textarea id="bio" name="notes"cols="50" rows="5" style="border:solid 1px"></textarea>
+          <textarea id="bio" name="notes"cols="50" rows="5" style="border:solid 1px"></textarea></p>
 <!--           </fieldset>
  -->               <!--  <p>
                     <label>Password*
@@ -390,8 +465,8 @@ int symptomlength = (int)request.getAttribute("symptomlength");
                     <label class="obinfo">* obligatory fields
                     </label>
                 </p> -->
-            </fieldset>
-            <fieldset class="row2">
+            
+            
                 <legend>Diagnosis
                 </legend>
                 <p>
@@ -498,17 +573,29 @@ int symptomlength = (int)request.getAttribute("symptomlength");
 
              </select>
                 </p>
-	 
+                <br><br>
+	 <button class="button">Create Case</button>
             </fieldset>
-           <div><button class="button">Register &raquo;</button></div>
+           
           
         </form>
         </div>
         <div class="right_pane col-lg-6">
     <iframe src="http://192.168.0.15:3000" height="500" width="500" name="Doctor"></iframe>
+    <!-- "http://192.168.0.15:3000" -->
     </div>
     </div>
     </div>
+    <script>
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+</script>
+    
     </body>
 </html>
 
