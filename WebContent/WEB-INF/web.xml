@@ -2,7 +2,7 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
 	<display-name>HealthApp</display-name>
 	<welcome-file-list>
-		<welcome-file>index.html</welcome-file>
+		<welcome-file>SignIn.jsp</welcome-file>
 		<welcome-file>index.htm</welcome-file>
 		<welcome-file>index.jsp</welcome-file>
 		<welcome-file>default.html</welcome-file>
@@ -30,7 +30,55 @@
   <servlet-class>com.ua.health.SignUp</servlet-class>
 </servlet>
 <servlet-mapping>
+  <servlet-name>Logout</servlet-name>
+  <url-pattern>/Logout</url-pattern>
+</servlet-mapping>
+<servlet>
+  <servlet-name>Logout</servlet-name>
+  <servlet-class>com.ua.health.Logout</servlet-class>
+</servlet>
+<servlet-mapping>
   <servlet-name>SignUp</servlet-name>
   <url-pattern>/SignUp</url-pattern>
+</servlet-mapping>
+<servlet>
+  <servlet-name>ChangePassword</servlet-name>
+  <servlet-class>com.ua.health.ChangePassword</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>ChangePassword</servlet-name>
+  <url-pattern>/ChangePassword</url-pattern>
+</servlet-mapping>
+<servlet>
+ <servlet-name>CreateCase</servlet-name>
+ <servlet-class>com.ua.health.CreateCase</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>CreateCase</servlet-name>
+  <url-pattern>/CreateCase</url-pattern>
+</servlet-mapping>
+<servlet>
+ <servlet-name>InitiateChat</servlet-name>
+ <servlet-class>com.ua.health.InitiateChat</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>InitiateChat</servlet-name>
+  <url-pattern>/InitiateChat</url-pattern>
+</servlet-mapping>
+<servlet>
+ <servlet-name>CaseHistory</servlet-name>
+ <servlet-class>com.ua.health.CaseHistory</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>CaseHistory</servlet-name>
+  <url-pattern>/CaseHistory</url-pattern>
+</servlet-mapping>
+<servlet>
+ <servlet-name>CheckAppointment</servlet-name>
+ <servlet-class>com.ua.health.CheckAppointment</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>CheckAppointment</servlet-name>
+  <url-pattern>/CheckAppointment</url-pattern>
 </servlet-mapping>
 </web-app>

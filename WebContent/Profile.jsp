@@ -148,8 +148,15 @@ body{
     color: #0062cc;
 }
 </style>
+<script type="text/javaScript">
+function disableBackButton()
+{
+window.history.forward();
+}
+setTimeout("disableBackButton()", 0);
+</script>
 </head>
-<body>
+<body onload="disableBackButton()">
 
 
 <%
@@ -169,9 +176,12 @@ String address = (String) request.getAttribute("address");
 
 
 <ul>
-  <li><a href="default.asp">Welcome : <%= fname %><%= " "%><%= lname%></a></li>
+  <li><a>Welcome : <%= fname %><%= " "%><%= lname%></a></li>
     <li style="float:right"><a class="active" href="#about">Patient ID:78622</a></li>
-       
+    
+         <li style="float:right"><form method="post" action="Logout">
+      <input type="submit" value="Logout" >
+    </form></li>
 <!-- 
   <li><a href="contact.asp">Contact</a></li>
   <li><a href="about.asp">About</a></li>  -->

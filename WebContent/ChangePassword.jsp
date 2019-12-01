@@ -1,7 +1,7 @@
 <!-- source-https://bootsnipp.com/snippets/dldxB -->
 <html>
 <head>
-<title>Sign Up</title>
+<title>Change Password</title>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -353,10 +353,11 @@ String text = (String)request.getAttribute("text");
     </div> -->
 
     <!-- Login Form -->
-  <form method="post" action="SignUp">
+  <form method="post" action="ChangePassword">
       <input type="text" class="focus"id="login"name="sid" placeholder="UA Student ID" required>
-      <input type="text" class="focus"id="login"name="username" placeholder="Username" required>
-      <input type="password" id="password"  name="password" placeholder="Password" required>
+       <input type="text" class="focus"id="login"name="username" placeholder="Username" required>
+      <input type="password" id="password"  name="oldPassword" placeholder="Old Password" required>
+	   <input type="password" id="password"  name="newPassword" placeholder="New Password" required>
       <input type="submit" value="Submit" ><!-- top-margin="50px -->
     </form>
 

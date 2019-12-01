@@ -324,27 +324,29 @@ input[type=text]:placeholder {
   width:60%;
 }
 
+      table, th, td {
+      padding: 10px;
+      border: 1px solid black; 
+      border-collapse: collapse;
+      }
+
 </style>
 <ul>
-  <li><a href="SignIn.jsp"><h2>UA Health Care</h2></a></li>
+  <li><a href="welcomePage.jsp"><h2>UA Health Care</h2></a></li>
 </ul>
 </head>
 <body>
 <%
-String text = (String)request.getAttribute("text"); 
+String casehistory[][] = (String [][])request.getAttribute("casehistory"); 
+int length = (int)request.getAttribute("length");
+
 %>
 
 <!------ Include the above in your HEAD tag ---------->
 
-<div align="center";> <!-- class="wrapper fadeInDown" -->
+<div> <!-- class="wrapper fadeInDown" -->
 
-  <div id="formContent">
-    <%if(text != null ){
-    out.print(text);   
-   }
-   else {
-   }%>
-
+<div id="formContent">
     <!-- Tabs Titles -->
 
     <!-- Icon -->
@@ -353,16 +355,57 @@ String text = (String)request.getAttribute("text");
     </div> -->
 
     <!-- Login Form -->
-  <form method="post" action="SignUp">
-      <input type="text" class="focus"id="login"name="sid" placeholder="UA Student ID" required>
-      <input type="text" class="focus"id="login"name="username" placeholder="Username" required>
-      <input type="password" id="password"  name="password" placeholder="Password" required>
-      <input type="submit" value="Submit" ><!-- top-margin="50px -->
-    </form>
+    <table>
+    <thead>
+      <tr>
+        <th>Case ID</th>
+        <th>Case Status</th>
+        <th>Case Start Time</th>
+        <th>Case Severity</th>
+        <th>Doctor Attended</th>
+        <th>Prescription Reference ID</th>
+        <th>Symptom</th>
+        <th>Symptom Type</th>
+        <th>Diagnosis Description</th>
+         <th>Notes by Doctor</th>
+         <th>Comments by Doctor</th>
+         <th>Medicine Prescribed</th>
+         <th>Tests Prescribed</th>
+      </tr>
+    </thead>
+    <tbody>
+    <%for(int i=0;i < length;i++)
+    {%>
 
-    <!-- Remind Passowrd -->
+          <tr>
+            <td><%= casehistory[i][0] %></td>
+            <td><%= casehistory[i][1]%></td>
+            <td><%= casehistory[i][2]%></td>
+            <td><%= casehistory[i][3]%></td>
+            <td><%= casehistory[i][4]%></td>
+            <td><%= casehistory[i][5]%></td>
+            <td><%= casehistory[i][6]%></td>
+            <td><%= casehistory[i][7]%></td>
+            <td><%= casehistory[i][8]%></td>
+            <td><%= casehistory[i][9]%></td>
+            <td><%= casehistory[i][10]%></td>
+            <td><%= casehistory[i][11]%></td>
+            <td><%= casehistory[i][12]%></td>
+            <td><%= casehistory[i][13]%></td>
+            
+          </tr>
+          <%} %>
+</tbody>
+</table>   
+     <!--  <input type="text" class="focus"id="login"name="sid" placeholder="UA Student ID">
+      <input type="password" id="password"  name="oldPassword" placeholder="Old Password">
+	   <input type="password" id="password"  name="newPassword" placeholder="New Password">
+      <input type="submit" value="Submit" >top-margin="50px
+  -->
+
+<!--     Remind Passowrd
 	<div id="formFooter">
-      <a class="underlineHover" href="SignIn.jsp">Already a member? Sign In</a>
+      <a class="underlineHover" href="SignIn.jsp">Sign In</a>
     </div>
     <div id="formFooter">
       <a class="underlineHover" href="ChangePassword.jsp">Forgot Password?</a>
@@ -370,7 +413,7 @@ String text = (String)request.getAttribute("text");
     <div id="formFooter">
       <a class="underlineHover" href="Signup.jsp">Don't have an account yet? Sign Up</a>
     </div>
-
+ -->
   </div>
 </div>
 </body>

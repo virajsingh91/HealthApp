@@ -29,27 +29,32 @@ public class SignUp extends HttpServlet{
             Connect c = new Connect();
     		Connection con;
     		con = c.JDBCConnection();
-    		CallableStatement storedProc = con.prepareCall("{call signup_check(?,?)}");
+    		CallableStatement storedProc = con.prepareCall("{call signup_proc2(?,?)}");
             storedProc.setString(1, username);
             storedProc.setString(2, sid);
             storedProc.execute();
-//    		query = "insert into patients values(?,?,?,?)";    		
-//    		PreparedStatement stmt = con.prepareStatement(query);
-//    		stmt.setInt(1, 1);
-//    		stmt.setString(2, username);
-//    		stmt.setString(3, password);
-//    		stmt.setString(4, sid);
-//    		System.out.println("Query :" + query);
-//    		stmt.execute();
+    		query = "insert into patients values(?,?,?,?)";    		
+    		PreparedStatement stmt = con.prepareStatement(query);
+    		stmt.setInt(1, 1);
+    		stmt.setString(2, username);
+    		stmt.setString(3, password);
+    		stmt.setString(4, sid);
+    		System.out.println("Query :" + query);
+    		stmt.execute();
     		con.close();
-    		text="Account Created Successfully";
+    		text="<p style=\"color:green\">Account Created Successfully</p>";
             } catch (SQLException e) {
             	int err_code= e.getErrorCode();
             	if(err_code == 20090) {
-            		text="Username already used. Please use a different username";
+            		text="<p style=\"color:red\">Username already used. Please use a different username</p>";
             	}
             	else if(err_code==20091) {
-            		text="You are already registered.Please login with your credentials";
+            		text="<p style=\"color:red\">You are already registered.Please login with your credentials</p>";
+            	}
+            	else if(err_code==20092) {
+            		text="<p style=\"color:red\">Student not registered with University</p>";
+            	}else {
+            		text="<p style=\"color:red\">Invalid Details.Please Check</p>";
             	}
             	//System.out.println("Error description: " + e.getMessage());
             	System.out.println("Error code: " + err_code);

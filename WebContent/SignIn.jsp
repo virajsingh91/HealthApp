@@ -1,6 +1,7 @@
 <!-- source-https://bootsnipp.com/snippets/dldxB -->
 <html>
 <head>
+<title>UA Heath</title>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -325,11 +326,13 @@ input[type=text]:placeholder {
 
 </style>
 <ul>
-  <li><h2>UA Health Care</h2></li>
+  <li><a href="SignIn.jsp"><h2>UA Health Care</h2></a></li>
 </ul>
 </head>
 <body>
-
+<%
+String text = (String)request.getAttribute("text"); 
+%>
 <!------ Include the above in your HEAD tag ---------->
 
 <div align="center";> <!-- class="wrapper fadeInDown" -->
@@ -343,18 +346,23 @@ input[type=text]:placeholder {
     </div> -->
 
     <!-- Login Form -->
-    <form>
-      <input type="text" class="focus"id="login"name="login" placeholder="Username">
-      <input type="password" id="password"  name="login" placeholder="Password"><br>
-      <input type="submit" value="Log In" ><!-- top-margin="50px -->
+  <form method="post" action="Login">
+   <%if(text != null ){
+    out.print(text);   
+   }
+   else {
+   }%>
+      <input type="text" class="focus"id="login"name="username" placeholder="Username" required>
+      <input type="password" id="password"  name="password" placeholder="Password" required><br>
+      <input type="submit" value="Sign In" ><!-- top-margin="50px -->
     </form>
 
     <!-- Remind Passowrd -->
     <div id="formFooter">
-      <a class="underlineHover" href="#">Forgot Password?</a>
+      <a class="underlineHover" href="ChangePassword.jsp">Forgot Password?</a>
     </div>
     <div id="formFooter">
-      <a class="underlineHover" href="#">Don't have an account yet? Sign Up</a>
+      <a class="underlineHover" href="Signup.jsp">Don't have an account yet? Sign Up</a>
     </div>
 
   </div>

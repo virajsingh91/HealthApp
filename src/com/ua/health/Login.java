@@ -30,38 +30,63 @@ public class Login extends HttpServlet {
         
        System.out.println("username: " + username);
        System.out.println("password: " + password);
-      
+       HttpSession session = request.getSession(true);
+       session.setMaxInactiveInterval(5*60);
        //session.setAttribute("UserName", username);
        
         String query="";
         String user="";
         String pass ="";
         String sid ="";
+        String pid ="";
+        String duser="";
+        String dpass ="";
+        String docid ="";
+        String query1="";
         try {
         Connect c = new Connect();
 		Connection con;
 		con = c.JDBCConnection();
 		query = "select * from patients where username ='" + username +"'";
 		PreparedStatement stmt = con.prepareStatement(query);
-		//stmt.setString(1, username);
 		System.out.println("Query :" + query);
 		ResultSet rs = stmt.executeQuery(query);
+		
 		while(rs.next()){
             user = rs.getString("username");
             pass = rs.getString("password");
             sid = rs.getString("studentid");
+            pid = rs.getString("patientid");
             System.out.println(user);
             System.out.println(pass);
             System.out.println(sid);
             request.setAttribute("user",user);
             request.setAttribute("pass",pass);
             request.setAttribute("sid",sid);
-        }
-        rs.close();
+            session.setAttribute("sid" , sid);
+            session.setAttribute("pid" , pid);
+         }rs.close();
+			query1 = "select * from doctors where username ='" + username +"'";;
+			PreparedStatement stmt1 = con.prepareStatement(query1);
+			System.out.println("Querydoc :" + query1);
+			ResultSet rs1 = stmt1.executeQuery(query1);
+			while(rs1.next()){
+	            duser = rs1.getString("username");
+	            dpass = rs1.getString("password");
+	            docid = rs1.getString("doctorid");
+	            System.out.println(duser);
+	            System.out.println(dpass);
+	            System.out.println(docid);
+	            request.setAttribute("user",user);
+	            request.setAttribute("pass",pass);
+	            request.setAttribute("docid",docid);
+	            session.setAttribute("docid" , docid);
+		}
+		
+        rs1.close();
         con.close();
-        HttpSession session = request.getSession(true);
-        session.setMaxInactiveInterval(5*60);
-        session.setAttribute("sid" , sid);
+        
+        
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -69,12 +94,18 @@ public class Login extends HttpServlet {
 
  
         if((username.equals(user)) & (password.equals(pass))) {
-        	response.sendRedirect("welcomePage.jsp");
+        	FetchDataPatient fe = new FetchDataPatient();
+        	HttpServletRequest reqq = fe.fetchdata(request);
+        	request.getRequestDispatcher("welcomePage.jsp").forward(reqq, response);
         }        
-        else if((username.equals("doctor")) & (password.equals("password"))) {
-        	response.sendRedirect("welcomePageDoctor.jsp");
+        else if((username.equals(duser)) & (password.equals(dpass))) {
+        	FetchDetails f = new FetchDetails();
+        	HttpServletRequest req = f.fetch(request);
+        	request.getRequestDispatcher("Test.jsp").forward(req, response);
         }else {
-        	response.sendRedirect("accessDenied.html");
+        	String text ="<p style=\"color:red\">Invalid Credentials</p>";
+        	request.setAttribute("text",text);
+            request.getRequestDispatcher("SignIn.jsp").forward(request, response);
         }
     }			
 			

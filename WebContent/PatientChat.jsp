@@ -58,11 +58,6 @@ body {
 </head>
 <body>
 
-<%
-String[] sym = (String[])request.getAttribute("sym"); 
-int length = (int)request.getAttribute("length");
-%>
-
 <h1>WELCOME TO UA HEALTH OTG - GOD BLESS YOU</h1>
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -81,16 +76,7 @@ int length = (int)request.getAttribute("length");
 <p>Click on the element below to open the side navigation menu.</p>
 <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; MENU</span>
 
-<form method="post" action="InitiateChat">
-  <select name="specializations">
-<%for(int i=0;i < length;i++)
-    {%>
-    <option value=i><%=sym[i] %></option>
-  <%} %> 
-  
-  </select>
-      <input type="submit" value="Submit" >
-    </form>
+<iframe src="http://192.168.0.25:3000" height="500" width="500" name="Patient"></iframe>
 
 <script>
 function openNav() {
