@@ -183,8 +183,12 @@ int length = (int)request.getAttribute("length");
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   
   <form method="post" action="Profile">
+<<<<<<< HEAD
   <input type="test" value="Profile">
   
+=======
+  <input type="submit" value="Profile" class="closebtn">
+>>>>>>> 0d52466edc63db2c104cc571e069679eb330c6e0
   </form>
 <!--   <a href="#">Profile</a> -->
  <form method="post" action="CaseHistory">
