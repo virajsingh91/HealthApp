@@ -10,6 +10,7 @@
 source : https://www.w3schools.com/howto/howto_js_sidenav.asp -->
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<iframe src="http://192.168.0.7:3000" height="500" width="500" name="Doctor"></iframe>
 <style>
 body {
   font-family: "Lato", sans-serif;
@@ -53,6 +54,12 @@ body {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
 }
+<style>
+iframe {
+	display: block;
+}
+.
+.
 </style>
 </head>
 <body>
