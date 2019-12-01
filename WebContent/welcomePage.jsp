@@ -74,7 +74,7 @@ int length = (int)request.getAttribute("length");
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <form method="post" action="Profile">
-  <input type="submit" value="Profile">
+  <input type="submit" value="Profile" class="closebtn">
   </form>
 <!--   <a href="#">Profile</a> -->
  <form method="post" action="CaseHistory">

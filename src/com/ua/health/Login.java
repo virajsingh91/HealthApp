@@ -101,7 +101,7 @@ public class Login extends HttpServlet {
         else if((username.equals(duser)) & (password.equals(dpass))) {
         	FetchDetails f = new FetchDetails();
         	HttpServletRequest req = f.fetch(request);
-        	request.getRequestDispatcher("Test.jsp").forward(req, response);
+        	request.getRequestDispatcher("NewFile1.jsp").forward(req, response);
         }else {
         	String text ="<p style=\"color:red\">Invalid Credentials</p>";
         	request.setAttribute("text",text);

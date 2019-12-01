@@ -15,33 +15,22 @@ public class FetchDetails {
 		String [][] medcodes = new String[100][100];
 		String [][] testcodes = new String[100][100];
 		String [][] pharmacy = new String[100][100];
+		String [][] symptoms = new String[100][100];
 		int i=0;
 		try {
+			String pid="";
+			String sid="";
+			String fname="";
+			String lname="";
+			String mi="";
+			String name="";
 			HttpSession session = request.getSession();
 			String docid=(String)session.getAttribute("docid");
 			System.out.println("DOC ID :" + docid);
 			Connect c = new Connect();
 			Connection con;
 			con = c.JDBCConnection();
-			//Create a new case
-			String query0 = "insert into case_details(caseid) values(?)";    		
-			PreparedStatement stmt0 = con.prepareStatement(query0);
-			stmt0.setInt(1, 1);
-			System.out.println("Query :" + query0);
-			stmt0.execute();
 			
-			//Get the CaseId
-			String currentCase ="select max(caseid) from case_details";
-			PreparedStatement stmtt = con.prepareStatement(currentCase);
-			//stmt.setString(1, docid);
-			System.out.println("Query :" + currentCase);
-			ResultSet rss = stmtt.executeQuery(currentCase);
-			while(rss.next()){
-	            String caseid = rss.getString("caseid");
-	            request.setAttribute("caseid",caseid);
-	            System.out.println("case id : "+caseid);
-	            session.setAttribute("caseid",caseid );
-			}
 			//Get Patient ID
 			String query ="select * from chat_details where docid=" + docid + " and chat_active=1";
 			PreparedStatement stmt = con.prepareStatement(query);
@@ -49,7 +38,7 @@ public class FetchDetails {
 			System.out.println("Query :" + query);
 			ResultSet rs = stmt.executeQuery(query);
 			while(rs.next()){
-	            String pid = rs.getString("pid");
+	            pid = rs.getString("pid");
 	            request.setAttribute("pid",pid);
 	            System.out.println("Patient id : "+pid);
 	            String iniSymptom = rs.getString("initial_symptoms");
@@ -57,6 +46,30 @@ public class FetchDetails {
 	            System.out.println("Initial Symptom : "+iniSymptom);
 	        }
 			
+			//Get Student id
+			String currentCase1 ="select studentid from patients where patientid='" + pid + "'";
+			PreparedStatement stmtt1 = con.prepareStatement(currentCase1);
+			//stmt.setString(1, docid);
+			System.out.println("Query :" + currentCase1);
+			ResultSet rss1 = stmtt1.executeQuery(currentCase1);
+			while(rss1.next()){
+			sid = rss1.getString("studentid");
+			}
+			
+			//Get Patient name
+			String query5 ="select * from students where studentid='" + sid + "'";
+			PreparedStatement stmtt2 = con.prepareStatement(query5);
+			//stmt.setString(1, docid);
+			System.out.println("Query :" + query5);
+			ResultSet rss2 = stmtt2.executeQuery(query5);
+			while(rss2.next()){
+			fname = rss2.getString("firstname");
+			mi = rss2.getString("middleinitial");
+			lname = rss2.getString("lastname");
+			
+			}
+			name = fname + " " + mi + " " + lname;
+			request.setAttribute("pname",name);
 			//Get ICD Codes
 			String query1="select * from diagnoses";
 			PreparedStatement stmt1 = con.prepareStatement(query1);
@@ -68,6 +81,7 @@ public class FetchDetails {
 	            System.out.println("description : "+icdcodes[i][1]);
 	            i=i+1;
 	        }
+			request.setAttribute("icdcodelength",i);
 			request.setAttribute("icdcodes",icdcodes);
 			//Get Medicine
 			i=0;
@@ -81,6 +95,7 @@ public class FetchDetails {
 	            System.out.println("productname : "+medcodes[i][1]);
 	            i=i+1;
 	        }
+			request.setAttribute("medcodelength",i);
 			request.setAttribute("medcodes",medcodes);
 			//Get LabTests
 			i=0;
@@ -94,6 +109,7 @@ public class FetchDetails {
 	            System.out.println("testname : "+testcodes[i][1]);
 	            i=i+1;
 	        }
+			request.setAttribute("testcodelength",i);
 			request.setAttribute("testcodes",testcodes);
 			//Get Pharmacy
 			i=0;
@@ -107,7 +123,23 @@ public class FetchDetails {
 	            System.out.println("pharmacyid : "+pharmacy[i][1]);
 	            i=i+1;
 	        }
+			request.setAttribute("pharmacylength",i);
 			request.setAttribute("pharmacy",pharmacy);
+			
+			//Get Symptoms
+			i=0;
+			String query6="select * from symptoms";
+			PreparedStatement stmt5 = con.prepareStatement(query6);
+			ResultSet rs5 = stmt5.executeQuery(query6);
+			while(rs5.next()){
+				symptoms[i][0] = rs5.getString("symptomid");
+	            System.out.println("medcode : " + medcodes[i][0]);
+	            symptoms[i][1]= rs5.getString("name");
+	            System.out.println("productname : "+medcodes[i][1]);
+	            i=i+1;
+	        }
+			request.setAttribute("symptomlength",i);
+			request.setAttribute("symptoms",symptoms);
 		} catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
