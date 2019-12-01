@@ -1,0 +1,12 @@
+com/ua/health/Connect.class
+com/ua/health/CheckAppointment.class
+com/ua/health/Login.class
+com/ua/health/FetchDetails.class
+com/ua/health/CaseHistory.class
+com/ua/health/SignUp.class
+com/ua/health/InitiateChat.class
+com/ua/health/FetchDataPatient.class
+com/ua/health/ChangePassword.class
+com/ua/health/Logout.class
+com/ua/health/Profile.class
+com/ua/health/CreateCase.class

@@ -10,11 +10,109 @@
 source : https://www.w3schools.com/howto/howto_js_sidenav.asp -->
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<iframe src="http://192.168.0.7:3000" height="500" width="500" name="Doctor"></iframe>
 <style>
-body {
-  font-family: "Lato", sans-serif;
+.header {
+  padding: 10px 14px;
+  background: #000046;
+  color: #f1f1f1;
+  width:100%;
+  text-transform: uppercase;
+  
+  }
+  
+  .content {
+  padding: 16px;
+  margin:100px;
+  align:center;
+  
 }
+
+ul {
+  list-style-type: none;
+  top:0;
+  margin: 0;
+  padding: 0;
+  width:100%;
+  position: fixed;
+/*   overflow: hidden;
+ */  background-color: #000046;
+  text-transform: uppercase;
+ 
+  
+}
+
+li {
+  float: left;
+/*   margin-left:0.5px;
+ */  align:center;
+}
+
+li a {
+/*   display: block;
+ */  color: white;
+  text-align: left;
+   padding: 10px 12px;
+  text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+  background-color: #000046;
+  ;
+}
+
+/* BASIC */
+
+/* html {
+  background-color: #56baed;
+} */
+
+body {
+  font-family: "Poppins", sans-serif;
+  height: 100vh;
+  align:center;
+}
+
+a {
+  color:#000046;
+/*   display:inline-block;
+ */  text-decoration: none;
+  font-weight: 400;
+  
+}
+
+
+h2 {
+  text-align: center;
+  font-size: 26px;
+  font-weight: 400;
+  text-transform: uppercase;
+  display:inline-block;
+  margin: 10px;
+  align:center; 
+  color: #fff;
+}
+#formContent {
+  -webkit-border-radius: 10px 10px 10px 10px;
+  border-radius: 10px 10px 10px 10px;
+  background: #000;
+  padding: 50px;
+  width: 90%;
+  max-width: 450px;
+  position: relative;
+  padding: 50px;
+  -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+  box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+  text-align: center;
+  margin-top:100px;
+  
+}
+
+
+/* body {
+
+  font-family: "Lato", sans-serif;
+} */
 
 .sidenav {
   height: 100%;
@@ -62,31 +160,49 @@ iframe {
 .
 .
 </style>
+
 </head>
 <body>
-
+<div class="header">
+  <ul>
+<!--   <p>Click on the element below to open the side navigation menu.</p>
+ -->
+ <li><a><span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span></a></li>
+  <li><a href="SignIn.jsp"><h2> Welcome Viraj</h2></a></li>
+  
+  
+</ul>
+</div>
 <%
 String[] sym = (String[])request.getAttribute("sym"); 
 int length = (int)request.getAttribute("length");
 %>
 
-<h1>WELCOME TO UA HEALTH OTG - GOD BLESS YOU</h1>
-<div id="mySidenav" class="sidenav">
+<!-- <h2>WELCOME TO UA HEALTH OTG - GOD BLESS YOU</h2>
+ --><div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  
   <form method="post" action="Profile">
+<<<<<<< HEAD
+  <input type="test" value="Profile">
+  
+=======
   <input type="submit" value="Profile" class="closebtn">
+>>>>>>> 0d52466edc63db2c104cc571e069679eb330c6e0
   </form>
 <!--   <a href="#">Profile</a> -->
  <form method="post" action="CaseHistory">
+ 
  <input type="submit" value="Case History">
   </form>
 <!--   <a href="#">Case History</a> -->
   <a href="#">Reports</a>
   <a href="#">Appointments</a>
+  
 </div>
-
-<p>Click on the element below to open the side navigation menu.</p>
-<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; MENU</span>
+<!-- <p>Click on the element below to open the side navigation menu.</p>
+ -->
+<div class="content">
 
 <form method="post" action="InitiateChat">
   <select name="specializations">
@@ -96,9 +212,12 @@ int length = (int)request.getAttribute("length");
   <%} %> 
   
   </select>
+    <div class="formContent">
+  
       <input type="submit" value="Submit" >
+      </div>
     </form>
-
+</div>
 <script>
 function openNav() {
   document.getElementById("mySidenav").style.width = "250px";
