@@ -455,7 +455,7 @@ int symptomlength = (int)request.getAttribute("symptomlength");
 <!-- <div class="container">
 <div class="row1"> -->
         <div class="left_pane col-lg-6">
- <form method="post" class="register" action="CreateCase">
+ <form method="post" class="register" action="CreateNewCase">
 
             <h5><b>Case Details</b></h5> <h5> <%if(text != null ){
     out.print(text);   

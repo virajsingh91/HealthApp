@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-public class CreateCase extends HttpServlet {
+public class CreateNewCase extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
@@ -169,10 +169,11 @@ public class CreateCase extends HttpServlet {
 	
 		request.setAttribute("text",text);
 		System.out.println("text :" + text);
-		request.getRequestDispatcher("accessDenied.html").forward(request, response);
+		request.getRequestDispatcher("SignIn.jsp").forward(request, response);
 
 		
 	}
          
+
 
 }

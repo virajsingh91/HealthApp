@@ -50,12 +50,12 @@
   <url-pattern>/ChangePassword</url-pattern>
 </servlet-mapping>
 <servlet>
- <servlet-name>CreateCase</servlet-name>
- <servlet-class>com.ua.health.CreateCase</servlet-class>
+ <servlet-name>CreateNewCase</servlet-name>
+ <servlet-class>com.ua.health.CreateNewCase</servlet-class>
 </servlet>
 <servlet-mapping>
-  <servlet-name>CreateCase</servlet-name>
-  <url-pattern>/CreateCase</url-pattern>
+  <servlet-name>CreateNewCase</servlet-name>
+  <url-pattern>/CreateNewCase</url-pattern>
 </servlet-mapping>
 <servlet>
  <servlet-name>InitiateChat</servlet-name>
