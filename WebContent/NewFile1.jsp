@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
     <head>
     
-        <title>CSS Registration Form</title>
+<!--         <title>CSS Registration Form</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <link rel="stylesheet" type="text/css" href="css/default.css"/>
          <link href="http://cdn-na.infragistics.com/igniteui/2019.2/latest/css/themes/infragistics/infragistics.theme.css" rel="stylesheet" />
@@ -12,9 +12,14 @@
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="http://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
 
-    <!-- Ignite UI Required Combined JavaScript Files -->
+    Ignite UI Required Combined JavaScript Files
     <script src="http://cdn-na.infragistics.com/igniteui/2019.2/latest/js/infragistics.core.js"></script>
-    <script src="http://cdn-na.infragistics.com/igniteui/2019.2/latest/js/infragistics.lob.js"></script>
+    <script src="http://cdn-na.infragistics.com/igniteui/2019.2/latest/js/infragistics.lob.js"></script> -->
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
     <script type="text/javaScript">
 	function disableBackButton() {
 		window.history.forward();
@@ -27,7 +32,7 @@
   font-family: "Lato", sans-serif;
 }
     /* The switch - the box around the slider */
-
+/* 
 input[type="text"],
 input[type="password"],
 input[type="date"],
@@ -39,9 +44,9 @@ input[type="tel"],
 input[type="time"],
 input[type="url"],
 
-textarea,
-    */*Set's border, padding and margin to 0 for all values*/
-{
+textarea,*/
+/*Set's border, padding and margin to 0 for all values*/
+/* {
     padding: 0;
     margin: 0;
     border:0;
@@ -83,7 +88,7 @@ h4 {
     font-size:9pt;
     font-weight:100;
     text-transform:uppercase;
-}
+} */ */
 form.register{
     width:800px;
     margin: 20px auto 0px auto;
@@ -281,6 +286,9 @@ display:none;
 .left_pane
 {
 float:left;
+/* width: 50px;
+height: 50px;
+border: solid black 4px; */
 }
 
 .right_pane
@@ -305,14 +313,15 @@ float:right;
   padding: 8px 8px 8px 32px;
   text-decoration: none;
   font-size: 25px;
-  color: #818181;
   display: block;
   transition: 0.3s;
   width:100%
 }
 
 .sidenav input:hover {
-  color: #0000ff;
+  border-color:white;
+  background-color:white;
+  color:black;
 }
 
 
@@ -328,6 +337,7 @@ float:right;
 .sidenav a:hover {
   color: #0000ff;
 }
+
 .sidenav .closebtn {
   position: absolute;
   top: 0;
@@ -340,6 +350,44 @@ float:right;
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
 }
+
+iframe {
+	display: block;
+}
+
+
+/*navbar*/
+.top_nav
+{
+    background-color: #000046;
+    color:white;
+}
+
+.top_nav h1
+{
+font-size: 26px;
+margin-left: 50px;
+
+}
+
+.hamburger
+{
+    margin-left: 25px;
+    font-size: 30px;
+    margin-top: -55px;
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    font-size:30px;
+    cursor:pointer;
+}
+
+.side_navbar_btn
+{
+    background-color: transparent;
+    border-color: black;
+    color:white;
+}
     
     </style>
         </head>
@@ -350,6 +398,8 @@ float:right;
 String pid = (String)request.getAttribute("pid"); 
 String pname = (String)request.getAttribute("pname");
 String localip = (String)request.getAttribute("localip");
+
+String text = (String)request.getAttribute("text"); 
 
 String url = "http://" + localip + ":3000";
 String icdcodes[][] = new String[100][100];
@@ -373,39 +423,51 @@ symptoms = (String[][])request.getAttribute("symptoms");
 int symptomlength = (int)request.getAttribute("symptomlength");
 
 %>
+<nav class="navbar navbar-default top_nav">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <h1><b>UA HEALTH CARE</b></h1>
+    </div>
+  </div>
+</nav>  
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <form method="post" action="ProfileDoctor" >
-  <input type="submit" value="Profile" disabled>
+  <input type="submit" value="Profile" class="side_navbar_btn" disabled>
   </form>
 <!--   <a href="#">Profile</a> -->
  <form method="post" action="CaseHistory">
- <input type="submit" value="Case History" disabled>
+ <input type="submit" value="Case History"  class="side_navbar_btn" disabled>
   </form>
 <!--   <a href="#">Case History</a> -->
    <form method="post" action="CheckAppointmentSchedule">
- <input type="submit" value="Appointments" disabled>  </form>
+ <input type="submit" value="Appointments" class="side_navbar_btn" disabled>  </form>
  
  <form method="post" action="Logout">
-      <input type="submit" value="Logout" >
+      <input type="submit" value="Logout" class="side_navbar_btn" >
     </form>
 
 
 </div>
 
-<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; MENU</span>
-<div class="container">
-<div class="row">
+<span class="hamburger" onclick="openNav()">&#9776;</span> <br>
+
+<!-- <div class="container">
+<div class="row1"> -->
         <div class="left_pane col-lg-6">
  <form method="post" class="register" action="CreateCase">
- 
-            <h1>Case Details</h1>
-           
+
+            <h5><b>Case Details</b></h5> <h5> <%if(text != null ){
+    out.print(text);   
+   }
+   else {
+   }%></h5>
+            <hr>          
             
             <fieldset class="row1">
-     <legend>Patient Details
+     <legend><b>Patient Details</b>
                 </legend>
-                
+                <p>
                     <label>Name
                     </label>
                     <input type="text" value="<%= pname %>" readonly/>
@@ -481,14 +543,11 @@ int symptomlength = (int)request.getAttribute("symptomlength");
                 </p> -->
             
             
-                <legend>Diagnosis
-                </legend>
+                <legend><b>Diagnosis</b></legend>
+                
                 <p>
-                
-                
-                </p>
-                 <p>
-                    <label>Diagnosis</label>
+    
+    <label>Diagnosis</label>
 <!-- <input type="text" class="long"/>
  -->             <select id = "myList" name = "icdcodes">
  <%for(int i=0;i < icdcodelength;i++)

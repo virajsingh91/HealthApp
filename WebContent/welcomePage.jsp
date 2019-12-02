@@ -8,6 +8,11 @@
 
 <!-- source for navigation pane from w3 schools 
 source : https://www.w3schools.com/howto/howto_js_sidenav.asp -->
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
@@ -131,14 +136,15 @@ h2 {
   padding: 8px 8px 8px 32px;
   text-decoration: none;
   font-size: 25px;
-  color: #818181;
   display: block;
   transition: 0.3s;
   width:100%
 }
 
 .sidenav input:hover {
-  color: #0000ff;
+  border-color:white;
+  background-color:white;
+  color:black;
 }
 
 
@@ -173,6 +179,38 @@ iframe {
 }
 
 
+/*navbar*/
+.top_nav
+{
+    background-color: #000046;
+    color:white;
+}
+
+.top_nav h1
+{
+font-size: 26px;
+margin-left: 50px;
+
+}
+
+.hamburger
+{
+    margin-left: 25px;
+    font-size: 30px;
+    margin-top: -55px;
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    font-size:30px;
+    cursor:pointer;
+}
+
+.side_navbar_btn
+{
+    background-color: transparent;
+    border-color: black;
+    color:white;
+}
 </style>
 <script type="text/javaScript">
 	function disableBackButton() {
@@ -199,28 +237,34 @@ int length = (int)request.getAttribute("length");
 
 <!-- <h2>WELCOME TO UA HEALTH OTG - GOD BLESS YOU</h2>
  -->
-  
-<h1>WELCOME TO UA HEALTH</h1>
+<nav class="navbar navbar-default top_nav">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <h1><b>UA HEALTH CARE</b></h1>
+    </div>
+  </div>
+</nav>  
+
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <form method="post" action="Profile">
-  <input type="submit" value="Profile">
+  <input type="submit" value="Profile" class="side_navbar_btn">
   </form>
 <!--   <a href="#">Profile</a> -->
  <form method="post" action="CaseHistory">
- <input type="submit" value="Case History">
+ <input type="submit" value="Case History" class="side_navbar_btn">
   </form>
 <!--   <a href="#">Case History</a> -->
    <form method="post" action="CheckAppointment">
-   <input type="submit" value="Book Appointment">
+   <input type="submit" value="Book Appointment" class="side_navbar_btn">
      </form>
      
  <form method="post" action="Logout">
-      <input type="submit" value="Logout" >
+      <input type="submit" value="Logout" class="side_navbar_btn">
     </form>
 </div>
   
-<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; MENU</span>
+<span class="hamburger" onclick="openNav()">&#9776;</span>
 <br><br>
 <!-- <p>Click on the element below to open the side navigation menu.</p>
  -->

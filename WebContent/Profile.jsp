@@ -9,6 +9,11 @@
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
 <style>
 body {
   font-family: "Lato", sans-serif;
@@ -163,61 +168,96 @@ li a:hover {
 }
 
 .sidenav {
-	height: 100%;
-	width: 0;
-	position: fixed;
-	z-index: 1;
-	top: 0;
-	left: 0;
-	background-color: #111;
-	overflow-x: hidden;
-	transition: 0.5s;
-	padding-top: 60px;
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
 }
 
 .sidenav input {
-	padding: 8px 8px 8px 32px;
-	text-decoration: none;
-	font-size: 25px;
-	color: #818181;
-	display: block;
-	transition: 0.3s;
-	width: 100%
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  display: block;
+  transition: 0.3s;
+  width:100%
 }
 
 .sidenav input:hover {
-	color: #0000ff;
+  border-color:white;
+  background-color:white;
+  color:black;
 }
 
-/* side navigation css */
+
 .sidenav a {
-	padding: 8px 8px 8px 32px;
-	text-decoration: none;
-	font-size: 25px;
-	color: #818181;
-	display: block;
-	transition: 0.3s;
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
 }
 
 .sidenav a:hover {
-	color: #0000ff;
+  color: #0000ff;
 }
 
 .sidenav .closebtn {
-	position: absolute;
-	top: 0;
-	right: 25px;
-	font-size: 36px;
-	margin-left: 50px;
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
 }
 
 @media screen and (max-height: 450px) {
-	.sidenav {
-		padding-top: 15px;
-	}
-	.sidenav a {
-		font-size: 18px;
-	}
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+iframe {
+	display: block;
+}
+
+
+/*navbar*/
+.top_nav
+{
+    background-color: #000046;
+    color:white;
+}
+
+.top_nav h1
+{
+font-size: 26px;
+margin-left: 50px;
+
+}
+
+.hamburger
+{
+    margin-left: 25px;
+    font-size: 30px;
+    margin-top: -55px;
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    font-size:30px;
+    cursor:pointer;
+}
+
+.side_navbar_btn
+{
+    background-color: transparent;
+    border-color: black;
+    color:white;
 }
 </style>
 <script type="text/javaScript">
@@ -251,31 +291,34 @@ li a:hover {
          <li style="float:right"><form method="post" action="Logout">
       <input type="submit" value="Logout" >
     </form></li> --%>
-
-
-	<h1>WELCOME TO UA HEALTH</h1>
+<nav class="navbar navbar-default top_nav">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <h1><b>UA HEALTH CARE</b></h1>
+    </div>
+  </div>
+</nav>  
 	<div id="mySidenav" class="sidenav">
 		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 		<form method="post" action="Profile">
-			<input type="submit" value="Profile">
+			<input type="submit" value="Profile" class="side_navbar_btn">
 		</form>
 		<!--   <a href="#">Profile</a> -->
 		<form method="post" action="CaseHistory">
-			<input type="submit" value="Case History">
+			<input type="submit" value="Case History" class="side_navbar_btn">
 		</form>
 		<!--   <a href="#">Case History</a> -->
 		<form method="post" action="CheckAppointment">
-			<input type="submit" value="Book Appointment" diabled>
+			<input type="submit" value="Book Appointment" class="side_navbar_btn" disabled>
 		</form>
 		<form method="post" action="Logout">
-			<input type="submit" value="Logout">
+			<input type="submit" value="Logout" class="side_navbar_btn">
 		</form>
 
 
 	</div>
 
-	<span style="font-size: 30px; cursor: pointer" onclick="openNav()">&#9776;
-		MENU</span>
+<span class="hamburger" onclick="openNav()">&#9776;</span>
 	<br>
 	<br>
 	<br>

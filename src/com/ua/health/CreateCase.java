@@ -169,7 +169,7 @@ public class CreateCase extends HttpServlet {
 	
 		request.setAttribute("text",text);
 		System.out.println("text :" + text);
-        request.getRequestDispatcher("Signup.jsp").forward(request, response); 
+        request.getRequestDispatcher("NewFile1.jsp").forward(request, response); 
 
 		
 	}
