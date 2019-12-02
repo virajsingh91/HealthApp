@@ -89,7 +89,7 @@ body {
   </form>
 <!--   <a href="#">Case History</a> -->
    <form method="post" action="CheckAppointment">
- <input type="submit" value="Book Appointment">
+ <input type="submit" value="Book Appointment" disabled>
  </form>
  <form method="post" action="Logout">
       <input type="submit" value="Logout" >

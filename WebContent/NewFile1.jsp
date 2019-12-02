@@ -21,8 +21,11 @@
 	}
 	setTimeout("disableBackButton()", 0);
 </script>
-    </head>
+
     <style>
+    body {
+  font-family: "Lato", sans-serif;
+}
     /* The switch - the box around the slider */
 
 input[type="text"],
@@ -339,6 +342,7 @@ float:right;
 }
     
     </style>
+        </head>
     <body onload="disableBackButton()">
     
     

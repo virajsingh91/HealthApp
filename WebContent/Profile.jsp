@@ -10,6 +10,9 @@
 <!------ Include the above in your HEAD tag ---------->
 
 <style>
+body {
+  font-family: "Lato", sans-serif;
+}
 ul {
 	list-style-type: none;
 	margin: 0;
@@ -35,11 +38,6 @@ li a:hover {
 	background-color: #fff;
 }
 
-body {
-	background: #fff;
-	font-family: "Poppins", sans-serif;
-	height: 100vh;
-}
 
 .emp-profile {
 	padding: 1%;
@@ -267,7 +265,7 @@ body {
 		</form>
 		<!--   <a href="#">Case History</a> -->
 		<form method="post" action="CheckAppointment">
-			<input type="submit" value="Book Appointment">
+			<input type="submit" value="Book Appointment" diabled>
 		</form>
 		<form method="post" action="Logout">
 			<input type="submit" value="Logout">
