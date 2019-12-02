@@ -328,8 +328,14 @@ input[type=text]:placeholder {
 <ul>
   <li><a href="SignIn.jsp"><h2>UA Health Care</h2></a></li>
 </ul>
+<script type="text/javaScript">
+	function disableBackButton() {
+		window.history.forward();
+	}
+	setTimeout("disableBackButton()", 0);
+</script>
 </head>
-<body>
+<body onload="disableBackButton()">
 <%
 String text = (String)request.getAttribute("text"); 
 %>

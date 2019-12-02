@@ -127,6 +127,21 @@ h2 {
   padding-top: 60px;
 }
 
+.sidenav input {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+  width:100%
+}
+
+.sidenav input:hover {
+  color: #0000ff;
+}
+
+
 .sidenav a {
   padding: 8px 8px 8px 32px;
   text-decoration: none;
@@ -137,9 +152,8 @@ h2 {
 }
 
 .sidenav a:hover {
-  color: #f1f1f1;
+  color: #0000ff;
 }
-
 
 .sidenav .closebtn {
   position: absolute;
@@ -153,57 +167,65 @@ h2 {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
 }
-<style>
+
 iframe {
 	display: block;
 }
-.
-.
-</style>
 
+
+</style>
+<script type="text/javaScript">
+	function disableBackButton() {
+		window.history.forward();
+	}
+	setTimeout("disableBackButton()", 0);
+</script>
 </head>
-<body>
-<div class="header">
+<body onload="disableBackButton()">
+<!-- <div class="header">
   <ul>
-<!--   <p>Click on the element below to open the side navigation menu.</p>
- -->
+  <p>Click on the element below to open the side navigation menu.</p>
+
  <li><a><span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span></a></li>
   <li><a href="SignIn.jsp"><h2> Welcome Viraj</h2></a></li>
   
   
 </ul>
-</div>
+</div> -->
 <%
 String[] sym = (String[])request.getAttribute("sym"); 
 int length = (int)request.getAttribute("length");
 %>
 
 <!-- <h2>WELCOME TO UA HEALTH OTG - GOD BLESS YOU</h2>
- --><div id="mySidenav" class="sidenav">
+ -->
+  
+<h1>WELCOME TO UA HEALTH</h1>
+<div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  
   <form method="post" action="Profile">
-<<<<<<< HEAD
-  <input type="test" value="Profile">
-  
-=======
-  <input type="submit" value="Profile" class="closebtn">
->>>>>>> 0d52466edc63db2c104cc571e069679eb330c6e0
+  <input type="submit" value="Profile">
   </form>
 <!--   <a href="#">Profile</a> -->
  <form method="post" action="CaseHistory">
- 
  <input type="submit" value="Case History">
   </form>
 <!--   <a href="#">Case History</a> -->
-  <a href="#">Reports</a>
-  <a href="#">Appointments</a>
-  
+   <form method="post" action="CheckAppointment">
+   <input type="submit" value="Book Appointment">
+     </form>
+     
+ <form method="post" action="Logout">
+      <input type="submit" value="Logout" >
+    </form>
 </div>
+  
+<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; MENU</span>
+<br><br>
 <!-- <p>Click on the element below to open the side navigation menu.</p>
  -->
-<div class="content">
-
+<!-- <div class="content"> -->
+<div >
 <form method="post" action="InitiateChat">
   <select name="specializations">
 <%for(int i=0;i < length;i++)
@@ -212,12 +234,13 @@ int length = (int)request.getAttribute("length");
   <%} %> 
   
   </select>
-    <div class="formContent">
+   
   
       <input type="submit" value="Submit" >
-      </div>
+     
     </form>
-</div>
+    </div>
+<!-- </div> -->
 <script>
 function openNav() {
   document.getElementById("mySidenav").style.width = "250px";
@@ -226,6 +249,7 @@ function openNav() {
 function closeNav() {
   document.getElementById("mySidenav").style.width = "0";
 }
+
 </script>
 
 </body>

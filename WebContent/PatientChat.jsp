@@ -68,10 +68,16 @@ body {
   .sidenav a {font-size: 18px;}
 }
 </style>
+<script type="text/javaScript">
+	function disableBackButton() {
+		window.history.forward();
+	}
+	setTimeout("disableBackButton()", 0);
+</script>
 </head>
-<body>
+<body onload="disableBackButton()">
 
-<h1>WELCOME TO UA HEALTH OTG - GOD BLESS YOU</h1>
+<h1>WELCOME TO UA HEALTH</h1>
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <form method="post" action="Profile">
@@ -84,12 +90,16 @@ body {
 <!--   <a href="#">Case History</a> -->
    <form method="post" action="CheckAppointment">
  <input type="submit" value="Book Appointment">
-  </form>
+ </form>
+ <form method="post" action="Logout">
+      <input type="submit" value="Logout" >
+    </form>
+
 
 </div>
 
-<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; MENU</span>
-<div style="float:right">
+<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; MENU</span><br><br><br>
+<div>
 <iframe src="http://192.168.0.15:3000" height="500" width="500" name="Patient"></iframe>
 </div>
 

@@ -15,6 +15,12 @@
     <!-- Ignite UI Required Combined JavaScript Files -->
     <script src="http://cdn-na.infragistics.com/igniteui/2019.2/latest/js/infragistics.core.js"></script>
     <script src="http://cdn-na.infragistics.com/igniteui/2019.2/latest/js/infragistics.lob.js"></script>
+    <script type="text/javaScript">
+	function disableBackButton() {
+		window.history.forward();
+	}
+	setTimeout("disableBackButton()", 0);
+</script>
     </head>
     <style>
     /* The switch - the box around the slider */
@@ -333,7 +339,7 @@ float:right;
 }
     
     </style>
-    <body>
+    <body onload="disableBackButton()">
     
     
 <%
@@ -374,8 +380,12 @@ int symptomlength = (int)request.getAttribute("symptomlength");
   </form>
 <!--   <a href="#">Case History</a> -->
    <form method="post" action="CheckAppointmentSchedule">
- <input type="submit" value="Appointments" disabled>
-  </form>
+ <input type="submit" value="Appointments" disabled>  </form>
+ 
+ <form method="post" action="Logout">
+      <input type="submit" value="Logout" >
+    </form>
+
 
 </div>
 

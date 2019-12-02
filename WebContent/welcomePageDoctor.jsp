@@ -54,8 +54,14 @@ body {
   .sidenav a {font-size: 18px;}
 }
 </style>
+<script type="text/javaScript">
+	function disableBackButton() {
+		window.history.forward();
+	}
+	setTimeout("disableBackButton()", 0);
+</script>
 </head>
-<body>
+<body onload="disableBackButton()">
 <h1>WELCOME TO UA HEALTH OTG - GOD BLESS YOU</h1>
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
