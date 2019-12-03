@@ -108,7 +108,12 @@ public class Login extends HttpServlet {
         	FetchDataPatient fe = new FetchDataPatient();
         	HttpServletRequest reqq = fe.fetchdata(request);
         	request.getRequestDispatcher("welcomePage.jsp").forward(reqq, response);
-        }        
+        }  
+        if((username.equals("admin")) & (password.equals("pass"))) {
+        	FetchDataPatient fe = new FetchDataPatient();
+        	HttpServletRequest reqq = fe.fetchdata(request);
+        	request.getRequestDispatcher("Query1.jsp").forward(reqq, response);
+        } 
         else if((username.equals(duser)) & (password.equals(dpass))) {
         	FetchDetails f = new FetchDetails();
         	HttpServletRequest req = f.fetch(request);

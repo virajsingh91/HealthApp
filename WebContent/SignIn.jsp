@@ -328,7 +328,7 @@ input[type=text]:placeholder {
    position: fixed;
    left: 0;
    bottom: 0;
-   width: 100%;
+   width: 80%;
    background-color: black;
    color: white;
    text-align: center;
@@ -383,17 +383,15 @@ String text = (String)request.getAttribute("text");
     </div>
       </div>
 </div>
+<br><br>
 
-<div class="foot">
- <p>Our Vision: To promote health, wellness and safety among UA students and the community we serve.
-
-Our Mission:
-To promote health, wellness and safety among UA students and the community we serve.
-
-At UA health, we are constantly working towards ensuring best-in-class medical care and health care services. We are committed to assisting the institution in health-related policy formulation and raising capable health care professionals.</p>
-
-</div>
 
 </body>
+<!-- <div class="foot">
+ <h5>Our Vision: To promote health, wellness and safety among UA students and the community we serve.<br>
+Our Mission:To promote health, wellness and safety among UA students and the community we serve.<br>
+At UA health, we are constantly working towards ensuring best-in-class medical care and health care services.<br> We are committed to assisting the institution in health-related policy formulation and raising capable health care professionals.</h5>
+
+</div> -->
 
 </html>

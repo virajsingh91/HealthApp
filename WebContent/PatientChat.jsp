@@ -117,10 +117,16 @@ margin-left: 38%;
 }
 .center {
   margin: auto;
-  width: 50%;
+  width: 61%;
   border: 3px  solid #000046;
   padding: 10px;
 }
+ marquee{
+         font-size: 20px;
+         font-weight: 600;
+         color: #000046;
+         font-family: sans-serif;
+        }
 </style>
 <script type="text/javaScript">
 	function disableBackButton() {
@@ -154,13 +160,13 @@ margin-left: 38%;
  <form method="post" action="Logout">
       <input type="submit" value="Logout" class="side_navbar_btn">
     </form>
-
-
 </div>
 
-<span class="hamburger" onclick="openNav()">&#9776;</span><br><br><br>
+<span class="hamburger" onclick="openNav()">&#9776;</span><br>
+<marquee>Beat the Flu...and ASU!
+Who will get more flu shots, Wildcats or Sun Devils? Protect yourself, your community, and help us earn bragging rights!  #AZFluVaxChallenge</marquee>
 <div class="center">
-<iframe src="http://169.254.164.209:3000" height="500" width="500" name="Patient"></iframe>
+<iframe src="http://169.254.164.209:3000" height="645" width="900" name="Patient"></iframe>
 </div>
 
 

@@ -40,8 +40,8 @@ public class BookAppointment extends HttpServlet{
     		PreparedStatement stmt2 = con.prepareStatement(query2);
     		stmt2.setInt(1, 7);
     		stmt2.setString(2, "In-Person");
-    		stmt2.setString(3, "'" + startTime + "'");
-    		stmt2.setString(4, "'" + startTime + "'");
+    		stmt2.setString(3, startTime);
+    		stmt2.setString(4, startTime);
     		stmt2.setString(5, appDate);
     		stmt2.setString(6, pid);
     		stmt2.setString(7, docid);
