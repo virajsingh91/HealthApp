@@ -324,6 +324,17 @@ input[type=text]:placeholder {
   width:60%;
 }
 
+.foot {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: black;
+   color: white;
+   text-align: center;
+   font-family: "Poppins", sans-serif;
+}
+
 </style>
 <ul>
   <li><a href="SignIn.jsp"><h2>UA Health Care</h2></a></li>
@@ -370,8 +381,19 @@ String text = (String)request.getAttribute("text");
     <div id="formFooter">
       <a class="underlineHover" href="Signup.jsp">Don't have an account yet? Sign Up</a>
     </div>
-
-  </div>
+      </div>
 </div>
+
+<div class="foot">
+ <p>Our Vision: To promote health, wellness and safety among UA students and the community we serve.
+
+Our Mission:
+To promote health, wellness and safety among UA students and the community we serve.
+
+At UA health, we are constantly working towards ensuring best-in-class medical care and health care services. We are committed to assisting the institution in health-related policy formulation and raising capable health care professionals.</p>
+
+</div>
+
 </body>
+
 </html>

@@ -180,9 +180,6 @@ iframe {
 
 
 /*navbar*/
-.navbar-header{
-margin-left: 38%;
-}
 .top_nav
 {
     background-color: #000046;
@@ -208,6 +205,9 @@ margin-left: 50px;
     cursor:pointer;
 }
 
+.navbar-header{
+margin-left: 38%;
+}
 .side_navbar_btn
 {
     background-color: transparent;
@@ -240,8 +240,10 @@ margin-left: 50px;
 </ul>
 </div> -->
 <%
-String[] sym = (String[])request.getAttribute("sym"); 
+String timeslots[][] = new String[100][100];
+timeslots = (String[][])request.getAttribute("timeslots");
 int length = (int)request.getAttribute("length");
+String appDate = (String)request.getAttribute("appDate");
 %>
 
 <!-- <h2>WELCOME TO UA HEALTH OTG - GOD BLESS YOU</h2>
@@ -278,21 +280,23 @@ int length = (int)request.getAttribute("length");
 <!-- <p>Click on the element below to open the side navigation menu.</p>
  -->
 <!-- <div class="content"> -->
-<div class ="center">
-<form method="post" action="InitiateChat">
-  <select name="specializations">
+<div class="center">
+<form method="post" action="BookAppointment">
+<p>Available Slots for <%= appDate %> (Choose Suitable One)</p>
+  <select name="startTime" >
 <%for(int i=0;i < length;i++)
     {%>
-    <option value=i><%=sym[i] %></option>
+     <option value = "<%= timeslots[i][0]%>"><%= timeslots[i][0]%> to <%= timeslots[i][1]%></option>
   <%} %> 
   
   </select>
    
-  
+    <!-- <input type="date" name="appDate" value="Select Date" > -->
       <input type="submit" value="Submit" >
      
     </form>
     </div>
+    
 <!-- </div> -->
 <script>
 function openNav() {

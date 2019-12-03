@@ -81,4 +81,20 @@
   <servlet-name>CheckAppointment</servlet-name>
   <url-pattern>/CheckAppointment</url-pattern>
 </servlet-mapping>
+<servlet>
+ <servlet-name>GetSpecializations</servlet-name>
+ <servlet-class>com.ua.health.GetSpecializations</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>GetSpecializations</servlet-name>
+  <url-pattern>/GetSpecializations</url-pattern>
+</servlet-mapping>
+<servlet>
+ <servlet-name>BookAppointment</servlet-name>
+ <servlet-class>com.ua.health.BookAppointment</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>BookAppointment</servlet-name>
+  <url-pattern>/BookAppointment</url-pattern>
+</servlet-mapping>
 </web-app>

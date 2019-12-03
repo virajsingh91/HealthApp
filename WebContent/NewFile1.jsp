@@ -654,7 +654,7 @@ int symptomlength = (int)request.getAttribute("symptomlength");
         </form>
         </div>
         <div class="right_pane col-lg-6">
-    <iframe src="http://192.168.0.15:3000" height="500" width="500" name="Doctor"></iframe>
+    <iframe src="<%= url %>" height="500" width="500" name="Doctor"></iframe>
     <!-- "http://192.168.0.15:3000" -->
     </div>
     </div>

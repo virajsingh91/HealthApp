@@ -84,6 +84,7 @@ iframe {
 {
     background-color: #000046;
     color:white;
+    
 }
 
 .top_nav h1
@@ -91,6 +92,9 @@ iframe {
 font-size: 26px;
 margin-left: 50px;
 
+}
+.navbar-header{
+margin-left: 38%;
 }
 
 .hamburger
@@ -110,6 +114,12 @@ margin-left: 50px;
     background-color: transparent;
     border-color: black;
     color:white;
+}
+.center {
+  margin: auto;
+  width: 50%;
+  border: 3px  solid #000046;
+  padding: 10px;
 }
 </style>
 <script type="text/javaScript">
@@ -138,8 +148,8 @@ margin-left: 50px;
  <input type="submit" value="Case History" class="side_navbar_btn">
   </form>
 <!--   <a href="#">Case History</a> -->
-   <form method="post" action="CheckAppointment">
- <input type="submit" value="Book Appointment" class="side_navbar_btn" disabled>
+   <form method="post" action="GetSpecializations">
+ <input type="submit" value="Book Appointment" class="side_navbar_btn">
  </form>
  <form method="post" action="Logout">
       <input type="submit" value="Logout" class="side_navbar_btn">
@@ -149,8 +159,8 @@ margin-left: 50px;
 </div>
 
 <span class="hamburger" onclick="openNav()">&#9776;</span><br><br><br>
-<div>
-<iframe src="http://192.168.0.15:3000" height="500" width="500" name="Patient"></iframe>
+<div class="center">
+<iframe src="http://169.254.164.209:3000" height="500" width="500" name="Patient"></iframe>
 </div>
 
 

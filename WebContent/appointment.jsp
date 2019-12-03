@@ -1,156 +1,353 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Welcome Patient</title>
+
+<!-- source for navigation pane from w3 schools 
+source : https://www.w3schools.com/howto/howto_js_sidenav.asp -->
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-.group:after {
-  content: "";
+.header {
+  padding: 10px 14px;
+  background: #000046;
+  color: #f1f1f1;
+  width:100%;
+  text-transform: uppercase;
+  
+  }
+  
+  .content {
+  padding: 16px;
+  margin:100px;
+  align:center;
+  
+}
+
+ul {
+  list-style-type: none;
+  top:0;
+  margin: 0;
+  padding: 0;
+  width:100%;
+  position: fixed;
+/*   overflow: hidden;
+ */  background-color: #000046;
+  text-transform: uppercase;
+ 
+  
+}
+
+li {
+  float: left;
+/*   margin-left:0.5px;
+ */  align:center;
+}
+
+li a {
+/*   display: block;
+ */  color: white;
+  text-align: left;
+   padding: 10px 12px;
+  text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+  background-color: #000046;
+  ;
+}
+
+/* BASIC */
+
+/* html {
+  background-color: #56baed;
+} */
+
+body {
+  font-family: "Poppins", sans-serif;
+  height: 100vh;
+  align:center;
+}
+
+a {
+  color:#000046;
+/*   display:inline-block;
+ */  text-decoration: none;
+  font-weight: 400;
+  
+}
+
+
+h2 {
+  text-align: center;
+  font-size: 26px;
+  font-weight: 400;
+  text-transform: uppercase;
+  display:inline-block;
+  margin: 10px;
+  align:center; 
+  color: #fff;
+}
+#formContent {
+  -webkit-border-radius: 10px 10px 10px 10px;
+  border-radius: 10px 10px 10px 10px;
+  background: #000;
+  padding: 50px;
+  width: 90%;
+  max-width: 450px;
+  position: relative;
+  padding: 50px;
+  -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+  box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+  text-align: center;
+  margin-top:100px;
+  
+}
+
+
+/* body {
+
+  font-family: "Lato", sans-serif;
+} */
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav input {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
   display: block;
-  clear: both;
+  transition: 0.3s;
+  width:100%
 }
 
-.landing-page {
-  width: 882px;
-  margin: 100px auto 0;  
+.sidenav input:hover {
+  border-color:white;
+  background-color:white;
+  color:black;
 }
 
-.landing-page *,
-.landing-page *:before,
-.landing-page *:after {
-	-webkit-box-sizing: border-box;
-       -moz-box-sizing: border-box;
-            box-sizing: border-box; 
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
 }
 
-.landing-page .module {
-	border: 1px solid rgb(219, 219, 219);
-	border-radius: 4px;
-	float: left;
-	padding: 2em;
-	width: 48%;
+.sidenav a:hover {
+  color: #0000ff;
 }
 
-.landing-page .module > *:last-child,
-.landing-page .module > *:last-child > *:last-child,
-.landing-page .module > *:last-child > *:last-child > *:last-child {
-	margin: 0;
-	padding: 0;
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
 }
 
-.landing-page .note {	
-	background-color: rgb(236, 248, 236);
-	border: 1px dashed;	
-	border-radius: 4px;	
-	color: rgb(115, 136, 96);
-	font-family: georgia;	
-	font-size: .9em;
-	font-style: italic;
-	margin: 20px auto;
-	padding: 2em;
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
 }
 
-.form-appointment {
-	padding: 2em;
-	background-color: rgb(239, 252, 239);
-	border-radius: 4px;
-	border: 1px solid rgb(130, 228, 130);
-	box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.1);
-	font-family: 'PT Sans', Arial, sans-serif;
-	margin: 20px auto;
-}
-
-.form-appointment input[type=text],
-.form-appointment input[type=email],
-.form-appointment input[type=tel],
-.form-appointment textarea {	
-	border: 1px solid rgb(153, 202, 129);
-	border-radius: .2em;	
-	font-family: 'PT Sans', Arial, sans-serif;
-	font-size: 1.1em;
-	padding: .4em 1em;
-	margin: 0 0 .8em;
-	width: 100%;
-  box-shadow: 0 0 8px rgba(0,0,0,.08) inset;
-}
-
-.form-appointment input[type=text],
-.form-appointment input[type=email],
-.form-appointment input[type=tel],
-.form-appointment input[type=submit],
-.form-appointment textarea {	
-	-webkit-transition: all .2s ease-in-out;
-	   -moz-transition: all .2s ease-in-out;
-	        transition: all .2s ease-in-out;
-}
-
- .form-appointment input[type=text]:active,
-.form-appointment input[type=text]:focus,
-.form-appointment input[type=email]:active,
-.form-appointment input[type=email]:focus,
-.form-appointment input[type=tel]:active,
-.form-appointment input[type=tel]:focus,
-.form-appointment textarea:active,
-.form-appointment textarea:focus {	
-  outline: 0;
-  box-shadow: 0 0 6px rgb(176, 226, 188);
-}
-
-.form-appointment textarea {
-	height: 160px;
-}
-
-.form-appointment input[type=submit] {
-	background-color: rgb(118, 207, 118);
-	border: 1px solid rgb(134, 189, 134);
-	border-radius: 4px;
-	color: rgb(255, 255, 255);
-	cursor: pointer;
-	font-family: inherit;
-	font-size: 1.4em;
-	padding: 10px 18px;
-}
-
-.form-appointment input[type=submit]:hover {
-	background-color: white;
-	color: rgb(118, 207, 118);
-}
-
-.form-appointment .wpcf7-list-item-label {
-	color: rgb(130, 178, 136);
-}
-
-span.wpcf7-list-item {
+iframe {
 	display: block;
-	margin-left: -.02em;
-}</style>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+}
+
+
+/*navbar*/
+.top_nav
+{
+    background-color: #000046;
+    color:white;
+}
+
+.top_nav h1
+{
+font-size: 26px;
+margin-left: 50px;
+
+}
+
+.hamburger
+{
+    margin-left: 25px;
+    font-size: 30px;
+    margin-top: -55px;
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    font-size:30px;
+    cursor:pointer;
+}
+
+.side_navbar_btn
+{
+    background-color: transparent;
+    border-color: black;
+    color:white;
+}
+.center {
+  margin: auto;
+  width: 50%;
+  border: 3px  solid #000046;
+  padding: 10px;
+}
+.navbar-header{
+margin-left: 38%;
+}
+</style>
+<script type="text/javaScript">
+	function disableBackButton() {
+		window.history.forward();
+	}
+	setTimeout("disableBackButton()", 0);
+</script>
 </head>
-<body>
-<div class="landing-page"><div class="form-appointment"><div class="wpcf7" id="wpcf7-f560-p590-o1"><form action="/landing-page-template-do-not-delete/#wpcf7-f560-p590-o1" method="post" class="wpcf7-form" novalidate="novalidate" _lpchecked="1">
-<div style="display: none;">
-<input type="hidden" name="_wpcf7" value="560">
-<input type="hidden" name="_wpcf7_version" value="3.5">
-<input type="hidden" name="_wpcf7_locale" value="">
-<input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f560-p590-o1">
-<input type="hidden" name="_wpnonce" value="dbb28877d5">
+<body onload="disableBackButton()">
+<!-- <div class="header">
+  <ul>
+  <p>Click on the element below to open the side navigation menu.</p>
+
+ <li><a><span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span></a></li>
+  <li><a href="SignIn.jsp"><h2> Welcome Viraj</h2></a></li>
+  
+  
+</ul>
+</div> -->
+<%
+String spec[][] = new String[100][100];
+spec = (String[][])request.getAttribute("spec");
+int length = (int)request.getAttribute("speclength");
+
+String app[][] = new String[100][100];
+app = (String[][])request.getAttribute("app");
+int applength = (int)request.getAttribute("applength");
+
+String text = (String)request.getAttribute("text"); 
+%>
+
+<!-- <h2>WELCOME TO UA HEALTH OTG - GOD BLESS YOU</h2>
+ -->
+<nav class="navbar navbar-default top_nav">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <h1><b>UA HEALTH CARE</b></h1>
+    </div>
+  </div>
+</nav>  
+
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <form method="post" action="Profile">
+  <input type="submit" value="Profile" class="side_navbar_btn">
+  </form>
+<!--   <a href="#">Profile</a> -->
+ <form method="post" action="CaseHistory">
+ <input type="submit" value="Case History" class="side_navbar_btn">
+  </form>
+<!--   <a href="#">Case History</a> -->
+   <form method="post" action="GetSpecializations">
+   <input type="submit" value="Book Appointment" class="side_navbar_btn">
+     </form>
+     
+ <form method="post" action="Logout">
+      <input type="submit" value="Logout" class="side_navbar_btn">
+    </form>
 </div>
-<div class="group">
-<div style="width: 48%; float: left;">
-<span class="wpcf7-form-control-wrap text-680"><input type="text" name="text-680" value="" size="45" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" placeholder="Name"></span><br>
-<span class="wpcf7-form-control-wrap email-680"><input type="email" name="email-680" value="" size="45" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email" aria-required="true" placeholder="Email"></span><br>
-<span class="wpcf7-form-control-wrap tel-630"><input type="tel" name="tel-630" value="" size="45" class="wpcf7-form-control wpcf7-text wpcf7-tel wpcf7-validates-as-required wpcf7-validates-as-tel" aria-required="true" placeholder="Phone"></span><br>
-<span class="wpcf7-form-control-wrap textarea-398"><textarea name="textarea-398" cols="40" rows="10" class="wpcf7-form-control wpcf7-textarea" placeholder="Special notes, concerns, or requirements"></textarea></span></div>
-<div style="width: 48%; float: right;">
-<h4>What is the best way to reach you?</h4>
-<p><span class="wpcf7-form-control-wrap radio-98"><span class="wpcf7-form-control wpcf7-radio"><span class="wpcf7-list-item"><label><input type="radio" name="radio-98" value="Phone">&nbsp;<span class="wpcf7-list-item-label">Phone</span></label></span><span class="wpcf7-list-item"><label><input type="radio" name="radio-98" value="Email">&nbsp;<span class="wpcf7-list-item-label">Email</span></label></span></span></span></p>
-<h4>Days of the week you are available for appointment:</h4>
-<p><span class="wpcf7-form-control-wrap checkbox-465"><span class="wpcf7-form-control wpcf7-checkbox"><span class="wpcf7-list-item"><label><input type="checkbox" name="checkbox-465[]" value="Monday">&nbsp;<span class="wpcf7-list-item-label">Monday</span></label></span><span class="wpcf7-list-item"><label><input type="checkbox" name="checkbox-465[]" value="Tuesday">&nbsp;<span class="wpcf7-list-item-label">Tuesday</span></label></span><span class="wpcf7-list-item"><label><input type="checkbox" name="checkbox-465[]" value="Wednesday">&nbsp;<span class="wpcf7-list-item-label">Wednesday</span></label></span><span class="wpcf7-list-item"><label><input type="checkbox" name="checkbox-465[]" value="Thursday">&nbsp;<span class="wpcf7-list-item-label">Thursday</span></label></span><span class="wpcf7-list-item"><label><input type="checkbox" name="checkbox-465[]" value="Friday">&nbsp;<span class="wpcf7-list-item-label">Friday</span></label></span></span></span></p>
-<h4>Best time of day for your appointment:</h4>
-<p><span class="wpcf7-form-control-wrap checkbox-246"><span class="wpcf7-form-control wpcf7-checkbox"><span class="wpcf7-list-item"><label><input type="checkbox" name="checkbox-246[]" value="Morning">&nbsp;<span class="wpcf7-list-item-label">Morning</span></label></span><span class="wpcf7-list-item"><label><input type="checkbox" name="checkbox-246[]" value="Afternoon">&nbsp;<span class="wpcf7-list-item-label">Afternoon</span></label></span></span></span></p></div>
+  
+<span class="hamburger" onclick="openNav()">&#9776;</span>
+<br><br>
+<!-- <p>Click on the element below to open the side navigation menu.</p>
+ -->
+<!-- <div class="content"> -->
+<div class = "center">
+<form method="post" action="CheckAppointment">
+  <select name="spec">
+<%for(int i=0;i < length;i++)
+    {%>
+     <option value = "<%= spec[i][2]%>"><%= spec[i][1]%></option>
+  <%} %> 
+  
+  </select>
+   
+    <input type="date" name="appDate" value="Select Date" >
+      <input type="submit" value="Submit" >
+     
+    </form>
+
+    
+     <%if(text != null ){
+    out.print(text);   
+   }
+   else {
+   }%>
+   
+   <br>
+   <p><b>Previously Booked Appointments: </b></p>
+   <br>
+
+    <table border="1">
+    <thead>
+      <tr>
+        <th>Appointment Date</th>
+        <th>Start Time</th>
+        <th>End Time</th>
+        <th>Doctor Name</th>
+
+      </tr>
+    </thead>
+    <tbody>
+    <%for(int i=0;i < applength;i++)
+    {%>
+
+          <tr>
+            <td><%= app[i][0] %></td>
+            <td><%= app[i][1]%></td>
+            <td><%= app[i][2]%></td>
+            <td><%= app[i][3]%></td>
+
+            
+          </tr>
+          <%} %>
+</tbody>
+</table>   
 </div>
-<div style="text-align: center; padding-top: 2em; border-top: 1px solid rgb(153, 202, 129); margin-top: 1em;"><input type="submit" value="Request My Appointment" class="wpcf7-form-control wpcf7-submit"><img class="ajax-loader" src="http://www.professionalaudiologicalservices.com/wp-content/plugins/contact-form-7/images/ajax-loader.gif" alt="Sending ..." style="visibility: hidden;"></div>
-  <div class="wpcf7-response-output wpcf7-display-none"></div></form></div></div></div>
+
+<script>
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+
+</script>
+
 </body>
 </html>
