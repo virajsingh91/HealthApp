@@ -104,6 +104,29 @@ margin-left: 50px;
     border-color: black;
     color:white;
 }
+ /* table css from w3 schools , source : https://www.w3schools.com/css/tryit.asp?filename=trycss_table_fancy */
+ #customers {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #000046;
+  color: white;
+}
 
 </style>
 <!-- <ul>
@@ -131,6 +154,9 @@ int length = (int)request.getAttribute("length");
 </nav>
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+   <form method="post" action="GoHome">
+ <input type="submit" value="Home" class="side_navbar_btn">
+  </form>
   <form method="post" action="Profile">
   <input type="submit" value="Profile" class="side_navbar_btn">
   </form>
@@ -140,7 +166,7 @@ int length = (int)request.getAttribute("length");
   </form>
 <!--   <a href="#">Case History</a> -->
    <form method="post" action="CheckAppointment">
- <input type="submit" value="Book Appointment" class="side_navbar_btn" disabled>
+ <input type="submit" value="Book Appointment" class="side_navbar_btn" >
  </form>
  <form method="post" action="Logout">
       <input type="submit" value="Logout" class="side_navbar_btn">
@@ -152,7 +178,7 @@ int length = (int)request.getAttribute("length");
 <span class="hamburger" onclick="openNav()">&#9776;</span>
 <br><br>
 <div> 
-    <table border="1">
+    <table border="1" id="customers">
     <thead>
       <tr>
         <th>Case ID</th>
@@ -161,6 +187,7 @@ int length = (int)request.getAttribute("length");
         <th>Case Severity</th>
         <th>Doctor Attended</th>
         <th>Prescription Reference ID</th>
+        <th>Pharmacy Zip Code</th>
         <th>Symptom</th>
         <th>Symptom Type</th>
         <th>Diagnosis Description</th>

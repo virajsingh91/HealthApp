@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.servlet.ServletException;
@@ -24,6 +25,7 @@ public class SignUp extends HttpServlet{
         System.out.println("sid: " + sid);
         String query="";
         String text="";
+        String enc_pass="";
         
         try {
             Connect c = new Connect();
@@ -33,11 +35,22 @@ public class SignUp extends HttpServlet{
             storedProc.setString(1, username);
             storedProc.setString(2, sid);
             storedProc.execute();
+            //CallableStatement stmt1 = con.prepareCall("select encrypt('" + password + "') from dual");
+            /*String enc_pass = "{ ? = call encrypt('" + password + "'), 'keytestvalue') }";*/
+            String enc_query ="select encrypt('" + password + "', 'keytestvalue') from dual";
+    		PreparedStatement stmtt = con.prepareStatement(enc_query);
+    		//stmt.setString(1, docid);
+    		//System.out.println("Query :" + Case);
+    		ResultSet rss = stmtt.executeQuery(enc_query);
+    		while(rss.next()){
+                enc_pass = rss.getString(1);
+               
+    		}
     		query = "insert into patients values(?,?,?,?)";    		
     		PreparedStatement stmt = con.prepareStatement(query);
     		stmt.setInt(1, 1);
     		stmt.setString(2, username);
-    		stmt.setString(3, password);
+    		stmt.setString(3, enc_pass);
     		stmt.setString(4, sid);
     		System.out.println("Query :" + query);
     		stmt.execute();

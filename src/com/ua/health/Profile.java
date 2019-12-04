@@ -61,7 +61,7 @@ public class Profile extends HttpServlet {
         }
         rs.close();
         con.close();
-        request.getRequestDispatcher("Profile.jsp").forward(request, response); 
+        request.getRequestDispatcher("Profile2.jsp").forward(request, response); 
 
 		} catch (SQLException e) {
             // TODO Auto-generated catch block

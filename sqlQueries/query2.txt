@@ -1,0 +1,20 @@
+With sym as ( select * from (select distinct md.drugs drugnames, s.name sname, s.type stype, count(c.caseid) NoofCases,extract(month from c.datetime) monthvalue, m.medicineid medicineid,m.productname medicines 
+from symptoms s 
+join case_symptoms cs on cs.symptomid = s.symptomid 
+join case_details c on c.caseid = cs.caseid 
+join prescriptions p on c.caseid = p.caseid 
+join drug_details dd on p.prescriptionid = dd.prescriptiionid 
+join medicines m on m.medicineid = dd.medicineid 
+join medicine_drugs md on m.medicineid = md.medicineid 
+where s.type NOT IN ('Psychiatric') 
+group by s.name,s.type,extract(month from c.datetime),m.productname,m.medicineid,md.drugs)), 
+ 
+drugdetail as (select * from (SELECT distinct medicineid ,sname names, stype typesymp, NoofCases caseno, medicines medname,monthvalue mv,listagg(drugnames, '; ') within group (order by drugnames) over (partition by medicineid) as tlist from sym)) 
+select names as "Symptoms",typesymp as "Symptom Type", caseno as "Total No of Cases", 
+(CASE 
+ WHEN mv IN (3,4,5) THEN 'Spring' 
+ WHEN mv IN (6,7,8) THEN 'Summer' 
+ WHEN mv IN (9,10,11) THEN 'Autumn' 
+ ELSE 'Winter' 
+END) as Seasons,medname as "Medicine Name", tlist as "Drugs" from drugdetail 
+order by caseno desc

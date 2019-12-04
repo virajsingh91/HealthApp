@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Welcome Patient</title>
+<title>Admin</title>
 
 <!-- source for navigation pane from w3 schools 
 source : https://www.w3schools.com/howto/howto_js_sidenav.asp -->
@@ -16,109 +16,9 @@ source : https://www.w3schools.com/howto/howto_js_sidenav.asp -->
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-.header {
-  padding: 10px 14px;
-  background: #000046;
-  color: #f1f1f1;
-  width:100%;
-  text-transform: uppercase;
-  
-  }
-  
-  .content {
-  padding: 16px;
-  margin:100px;
-  align:center;
-  
-}
-
-ul {
-  list-style-type: none;
-  top:0;
-  margin: 0;
-  padding: 0;
-  width:100%;
-  position: fixed;
-/*   overflow: hidden;
- */  background-color: #000046;
-  text-transform: uppercase;
- 
-  
-}
-
-li {
-  float: left;
-/*   margin-left:0.5px;
- */  align:center;
-}
-
-li a {
-/*   display: block;
- */  color: white;
-  text-align: left;
-   padding: 10px 12px;
-  text-decoration: none;
-}
-
-/* Change the link color to #111 (black) on hover */
-li a:hover {
-  background-color: #000046;
-  ;
-}
-
-/* BASIC */
-
-/* html {
-  background-color: #56baed;
-} */
-
 body {
-  font-family: "Poppins", sans-serif;
-  height: 100vh;
-  align:center;
-}
-
-a {
-  color:#000046;
-/*   display:inline-block;
- */  text-decoration: none;
-  font-weight: 400;
-  
-}
-
-
-h2 {
-  text-align: center;
-  font-size: 26px;
-  font-weight: 400;
-  text-transform: uppercase;
-  display:inline-block;
-  margin: 10px;
-  align:center; 
-  color: #fff;
-}
-#formContent {
-  -webkit-border-radius: 10px 10px 10px 10px;
-  border-radius: 10px 10px 10px 10px;
-  background: #000;
-  padding: 50px;
-  width: 90%;
-  max-width: 450px;
-  position: relative;
-  padding: 50px;
-  -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
-  box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
-  text-align: center;
-  margin-top:100px;
-  
-}
-
-
-/* body {
-
   font-family: "Lato", sans-serif;
-} */
-
+}
 .sidenav {
   height: 100%;
   width: 0;
@@ -180,13 +80,11 @@ iframe {
 
 
 /*navbar*/
-.navbar-header{
-margin-left: 38%;
-}
 .top_nav
 {
     background-color: #000046;
     color:white;
+    
 }
 
 .top_nav h1
@@ -194,6 +92,9 @@ margin-left: 38%;
 font-size: 26px;
 margin-left: 50px;
 
+}
+.navbar-header{
+margin-left: 38%;
 }
 
 .hamburger
@@ -215,10 +116,48 @@ margin-left: 50px;
     color:white;
 }
 .center {
-  margin: auto;
-  width: 50%;
+  margin: left;
+  table-layout: fixed;
+  width: 100%;
   border: 3px  solid #000046;
   padding: 10px;
+  overflow-wrap: break-word;
+}
+
+.center1 {
+  margin: auto;
+  width: 27%;
+  border: 3px  solid #000046;
+  padding: 10px;
+}
+ marquee{
+         font-size: 20px;
+         font-weight: 600;
+         color: #000046;
+         font-family: sans-serif;
+        }
+  /* table css from w3 schools , source : https://www.w3schools.com/css/tryit.asp?filename=trycss_table_fancy */
+ #customers {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #000046;
+  color: white;
 }
 </style>
 <script type="text/javaScript">
@@ -229,72 +168,73 @@ margin-left: 50px;
 </script>
 </head>
 <body onload="disableBackButton()">
-<!-- <div class="header">
-  <ul>
-  <p>Click on the element below to open the side navigation menu.</p>
-
- <li><a><span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span></a></li>
-  <li><a href="SignIn.jsp"><h2> Welcome Viraj</h2></a></li>
-  
-  
-</ul>
-</div> -->
 <%
-String[][] sym = (String[][])request.getAttribute("sym"); 
-int length = (int)request.getAttribute("length");
-%>
+String thead = (String)request.getAttribute("thead"); 
+String tbody = (String)request.getAttribute("tbody"); 
 
-<!-- <h2>WELCOME TO UA HEALTH OTG - GOD BLESS YOU</h2>
- -->
+%>
 <nav class="navbar navbar-default top_nav">
   <div class="container-fluid">
     <div class="navbar-header">
       <h1><b>UA HEALTH CARE</b></h1>
     </div>
   </div>
-</nav>  
-
+</nav> 
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <form method="post" action="Profile">
+<!--   <form method="post" action="Profile">
   <input type="submit" value="Profile" class="side_navbar_btn">
   </form>
-<!--   <a href="#">Profile</a> -->
+  <a href="#">Profile</a>
  <form method="post" action="CaseHistory">
  <input type="submit" value="Case History" class="side_navbar_btn">
   </form>
-<!--   <a href="#">Case History</a> -->
+  <a href="#">Case History</a>
    <form method="post" action="GetSpecializations">
-   <input type="submit" value="Book Appointment" class="side_navbar_btn">
-     </form>
-     
+ <input type="submit" value="Book Appointment" class="side_navbar_btn">
+ </form> -->
  <form method="post" action="Logout">
       <input type="submit" value="Logout" class="side_navbar_btn">
     </form>
 </div>
-  
-<span class="hamburger" onclick="openNav()">&#9776;</span>
-<br><br>
-<!-- <p>Click on the element below to open the side navigation menu.</p>
- -->
-<!-- <div class="content"> -->
-<div class ="center">
-<form method="post" action="InitiateChat">
-<p>Please select the most suitable symptom, We'll quickly assign you a Doctor to interact with! &nbsp;</p>
-  <select name="symptom">
-<%for(int i=0;i < length;i++)
-    {%>
-    <option value=<%=sym[i][0] %>><%=sym[i][1] %></option>
-  <%} %> 
-  
+
+<span class="hamburger" onclick="openNav()">&#9776;</span><br>
+
+<div class="center1">
+<form method="post" action="Analysis">
+<p>Select Analysis Query to Run &nbsp;
+  <select name="runAnalysis">
+    <option value=1>Case Count Analysis</option>
+    <option value=2>Symptom and Drug Pattern</option>
+    <option value=3>Crew Classification</option>
+    <option value=4>Employee Ranking</option>
+    <option value=5>Diagnosis Insured</option>
+    <option value=6>Diagnosis Appropriateness</option>
+    <option value=7>Student Subsidy Eligibility</option>
+<!--     <option value=8>Query8</option>
+    <option value=9>Query9</option> -->
+ 
   </select>&nbsp;&nbsp;
-   
-  
-      <input type="submit" value="Submit" >
-     
-    </form>
-    </div>
-<!-- </div> -->
+    <input type="submit" value="Submit" >
+  </form></p>
+  </div>
+  <br>
+  <div>
+<!-- <iframe src="http://169.254.164.209:3000" height="645" width="900" name="Patient"></iframe> -->
+    <table border="1" class="center" id="customers">
+    <thead>
+          
+       <%= thead %>
+      
+    </thead>
+    <tbody>
+    <%= tbody %>
+</tbody>
+</table>
+</div>
+
+
+
 <script>
 function openNav() {
   document.getElementById("mySidenav").style.width = "250px";
@@ -303,7 +243,6 @@ function openNav() {
 function closeNav() {
   document.getElementById("mySidenav").style.width = "0";
 }
-
 </script>
 
 </body>

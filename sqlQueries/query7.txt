@@ -1,0 +1,12 @@
+SELECT mr.patientid,  
+lt.testname,  
+count(*) as "TIMES TEST DONE", 
+to_char(sum(lt.fees), '$99,999.99') as "TOTAL FEE" 
+FROM medicalreports mr JOIN actual_lab_tests alt 
+    on alt.actuallabtestid = mr.actuallabtestid 
+    JOIN lab_tests lt 
+        on lt.testID = alt.labtestid  
+GROUP BY mr.patientid, lt.testid, lt.testname 
+HAVING SUM(lt.fees) > 250 
+ORDER BY "TOTAL FEE" DESC 
+fetch first 5 rows only

@@ -17,6 +17,7 @@ public class FetchDetails {
 		String [][] pharmacy = new String[100][100];
 		String [][] symptoms = new String[100][100];
 		int i=0;
+		String chatid="";
 		try {
 			String pid="";
 			String sid="";
@@ -32,7 +33,7 @@ public class FetchDetails {
 			con = c.JDBCConnection();
 			
 			//Get Patient ID
-			String query ="select * from chat_details where docid=" + docid + " and chat_active=1";
+			String query ="select * from chat_details c join symptoms s on c.initial_symptoms =s.symptomid where docid=" + docid + " and chat_active=1";
 			PreparedStatement stmt = con.prepareStatement(query);
 			//stmt.setString(1, docid);
 			System.out.println("Query :" + query);
@@ -41,7 +42,12 @@ public class FetchDetails {
 	            pid = rs.getString("pid");
 	            request.setAttribute("pid",pid);
 	            System.out.println("Patient id : "+pid);
-	            String iniSymptom = rs.getString("initial_symptoms");
+	            session.setAttribute("pid",pid);
+	            chatid = rs.getString("chatid");
+                request.setAttribute("chatid",chatid);
+                System.out.println("chat id : "+chatid);
+                session.setAttribute("chatid",chatid );
+	            String iniSymptom = rs.getString("name");
 	            request.setAttribute("iniSymptom",iniSymptom);
 	            System.out.println("Initial Symptom : "+iniSymptom);
 	        }
@@ -81,6 +87,9 @@ public class FetchDetails {
 	            System.out.println("description : "+icdcodes[i][1]);
 	            i=i+1;
 	        }
+			icdcodes[i][0]= "0";
+			icdcodes[i][1]= "None";
+			i=i+1;
 			request.setAttribute("icdcodelength",i);
 			request.setAttribute("icdcodes",icdcodes);
 			//Get Medicine
@@ -95,6 +104,9 @@ public class FetchDetails {
 	            System.out.println("productname : "+medcodes[i][1]);
 	            i=i+1;
 	        }
+			medcodes[i][0]= "0";
+			medcodes[i][1]= "None";
+			i=i+1;
 			request.setAttribute("medcodelength",i);
 			request.setAttribute("medcodes",medcodes);
 			//Get LabTests
@@ -109,6 +121,9 @@ public class FetchDetails {
 	            System.out.println("testname : "+testcodes[i][1]);
 	            i=i+1;
 	        }
+			testcodes[i][0]= "0";
+			testcodes[i][1]= "None";
+			i=i+1;
 			request.setAttribute("testcodelength",i);
 			request.setAttribute("testcodes",testcodes);
 			//Get Pharmacy
@@ -123,6 +138,9 @@ public class FetchDetails {
 	            System.out.println("pharmacyid : "+pharmacy[i][1]);
 	            i=i+1;
 	        }
+			pharmacy[i][0]= "0";
+			pharmacy[i][1]= "None";
+			i=i+1;
 			request.setAttribute("pharmacylength",i);
 			request.setAttribute("pharmacy",pharmacy);
 			
@@ -133,11 +151,12 @@ public class FetchDetails {
 			ResultSet rs5 = stmt5.executeQuery(query6);
 			while(rs5.next()){
 				symptoms[i][0] = rs5.getString("symptomid");
-	            System.out.println("medcode : " + medcodes[i][0]);
+	            System.out.println("medcode : " + symptoms[i][0]);
 	            symptoms[i][1]= rs5.getString("name");
-	            System.out.println("productname : "+medcodes[i][1]);
+	            System.out.println("productname : "+symptoms[i][1]);
 	            i=i+1;
 	        }
+			con.close();
 			request.setAttribute("symptomlength",i);
 			request.setAttribute("symptoms",symptoms);
 		} catch (SQLException e) {

@@ -21,6 +21,9 @@ public class CreateNewCase extends HttpServlet {
 		HttpSession session = request.getSession();
 //		String caseid=(String)session.getAttribute("caseid");
 //		System.out.println("caseid :" + caseid);
+		
+		String localip=(String)session.getAttribute("localip");
+		request.setAttribute("localip",localip);
 		String docid=(String)session.getAttribute("docid");
 		System.out.println("docid :" + docid);
 		String pid =(String)session.getAttribute("pid");
@@ -107,7 +110,8 @@ public class CreateNewCase extends HttpServlet {
 			System.out.println("Query :" + query1);
 			stmt1.execute();
 		
-		
+		if (!(icdcode.equals("0"))) {				
+			
 		//Insert into diagnosis_details
 		String query2 = "insert into diagnosis_details values(?,?,?,?,?)";    		
 		PreparedStatement stmt2 = con.prepareStatement(query2);
@@ -119,7 +123,9 @@ public class CreateNewCase extends HttpServlet {
 		System.out.println("Query :" + query2);
 		System.out.println("DIagnosis Status :" + dcomplete);
 		stmt2.execute();
+		}
 		
+		if (!(medcode.equals("0")) || !(labtests.equals("0"))) {	
 		//Insert into prescriptions
 		String query3 = "insert into prescriptions values(?,?,?,?,?,?)";    		
 		PreparedStatement stmt3 = con.prepareStatement(query3);
@@ -128,11 +134,12 @@ public class CreateNewCase extends HttpServlet {
 		stmt3.setInt(3, 111);
 		stmt3.setString(4, caseid);
 		stmt3.setString(5, docid);
-		stmt3.setString(6, pharmacyid);
-		
+		stmt3.setString(6, pharmacyid);		
 		stmt3.execute();
 		System.out.println("Query :" + query3);
+		}
 		
+		if (!(labtests.equals("0")) || !(medcode.equals("0"))) {
 		//Insert into prescription_labtests
 		String current_pres = "select max(prescriptionid) from prescriptions";
 		PreparedStatement stmt4 = con.prepareStatement(current_pres);
@@ -147,8 +154,9 @@ public class CreateNewCase extends HttpServlet {
 			stmt5.setString(2, presid);
 			System.out.println("Query :" + query4);
 			stmt5.execute();
+		}
 		
-	
+		if (!(medcode.equals("0"))) {
 		//Insert into drug_details
 			String query6 = "insert into drug_details values(?,?,?,?)";    		
 			PreparedStatement stmt6 = con.prepareStatement(query6);
@@ -159,7 +167,8 @@ public class CreateNewCase extends HttpServlet {
 				stmt6.setString(4, composition);
 				System.out.println("Query :" + query6);
 				stmt6.execute();
-		text="<p style=\"color:green\">Case Creation Successful</p>";
+		}
+		text="<p style=\"color:green\">New Case (ID - " + caseid +") Created Successfully</p>";
 		con.close();
 		} catch (SQLException e) {
             // TODO Auto-generated catch block
@@ -169,7 +178,7 @@ public class CreateNewCase extends HttpServlet {
 	
 		request.setAttribute("text",text);
 		System.out.println("text :" + text);
-		request.getRequestDispatcher("SignIn.jsp").forward(request, response);
+		request.getRequestDispatcher("NewFile2.jsp").forward(request, response);
 
 		
 	}

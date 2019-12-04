@@ -97,4 +97,36 @@
   <servlet-name>BookAppointment</servlet-name>
   <url-pattern>/BookAppointment</url-pattern>
 </servlet-mapping>
+<servlet>
+ <servlet-name>Analysis</servlet-name>
+ <servlet-class>com.ua.health.Analysis</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>Analysis</servlet-name>
+  <url-pattern>/Analysis</url-pattern>
+</servlet-mapping>
+<servlet>
+ <servlet-name>GoHome</servlet-name>
+ <servlet-class>com.ua.health.GoHome</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>GoHome</servlet-name>
+  <url-pattern>/GoHome</url-pattern>
+</servlet-mapping>
+<servlet>
+ <servlet-name>EndChat</servlet-name>
+ <servlet-class>com.ua.health.EndChat</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>EndChat</servlet-name>
+  <url-pattern>/EndChat</url-pattern>
+</servlet-mapping>
+<servlet>
+ <servlet-name>EndChatPatient</servlet-name>
+ <servlet-class>com.ua.health.EndChatPatient</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>EndChatPatient</servlet-name>
+  <url-pattern>/EndChatPatient</url-pattern>
+</servlet-mapping>
 </web-app>

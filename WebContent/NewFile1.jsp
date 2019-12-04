@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
     <head>
-    
+    <title>Welcome Doctor</title>
 <!--         <title>CSS Registration Form</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <link rel="stylesheet" type="text/css" href="css/default.css"/>
@@ -400,6 +400,7 @@ String pname = (String)request.getAttribute("pname");
 String localip = (String)request.getAttribute("localip");
 
 String text = (String)request.getAttribute("text"); 
+String iniSymptom = (String)request.getAttribute("iniSymptom");
 
 String url = "http://" + localip + ":3000";
 String icdcodes[][] = new String[100][100];
@@ -432,6 +433,9 @@ int symptomlength = (int)request.getAttribute("symptomlength");
 </nav>  
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+   <form method="post" action="DocHome" >
+  <input type="submit" value="Home" class="side_navbar_btn" disabled>
+  </form>
   <form method="post" action="ProfileDoctor" >
   <input type="submit" value="Profile" class="side_navbar_btn" disabled>
   </form>
@@ -471,8 +475,7 @@ int symptomlength = (int)request.getAttribute("symptomlength");
                     <label>Name
                     </label>
                     <input type="text" value="<%= pname %>" readonly/>
-                    <label>Patient ID
-                    </label>
+                    <label>Patient ID </label>
                     <input type="text" value="<%= pid %>" readonly/>
                 <br></br>
                 <!-- <p>
@@ -524,7 +527,9 @@ int symptomlength = (int)request.getAttribute("symptomlength");
               
              </select>
           
-                    
+                   <label>Initial Symptom
+                    </label>
+                    <input type="text" value="<%= iniSymptom %>" readonly/> 
                 <!-- </p>
                 <p> -->
 <p>
@@ -553,7 +558,7 @@ int symptomlength = (int)request.getAttribute("symptomlength");
  <%for(int i=0;i < icdcodelength;i++)
     {%>
 
-         <option value = "<%= icdcodes[i][0]%>"><%= icdcodes[i][1]%></option>
+         <option value = "<%= icdcodes[i][0]%>"><%= icdcodes[i][0]%> - <%= icdcodes[i][1]%></option>
           <%} %>
               
              </select>
@@ -579,6 +584,7 @@ int symptomlength = (int)request.getAttribute("symptomlength");
                     <label>Frequency
                     </label>
                       <select id = "myList" name = "frequency">
+                      
                <option value = "0-0-1">0-0-1</option>
                <option value = "0-1-0">0-1-0</option>
                <option value = "0-1-1">0-1-1</option>
@@ -586,7 +592,7 @@ int symptomlength = (int)request.getAttribute("symptomlength");
                <option value = "1-1-0">1-1-0</option>
                <option value = "1-0-1">1-0-1</option>
                <option value = "1-1-1">1-1-1</option>
-               
+               <option value = "0">None</option>
              </select>
 
                 </p>
@@ -594,10 +600,12 @@ int symptomlength = (int)request.getAttribute("symptomlength");
                     <label>Composition
                     </label>
                     <select id = "myList" name = "composition">
+                   
                <option value = "5">5mg</option>
                <option value = "10">10mg</option>
                <option value = "15">15mg</option>
                <option value = "20">20mg</option>
+               <option value = "0">None</option>
              </select>
                 </p>
                 <p>

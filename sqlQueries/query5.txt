@@ -1,0 +1,11 @@
+With t as  
+(select * from (select icdcode,b.inscompanyid icompanyid,sum(coalesce(b.total_cost,0)+coalesce(b.additionalcharges,0)) billamount,count(icdcode) nooficdcode from billing_details b  
+join diagnosis_details dd on dd.caseid = b.caseid  
+join insurance_companies ic on ic.inscompanyid = b.inscompanyid  
+group by icdcode,b.inscompanyid  
+))  
+select t.icompanyid "Insurance Company ID",d.description as "Diagnosis",t.nooficdcode "No of Cases Diagnosed",t.billamount "Total Bill Amount"  
+from t  
+join diagnoses d  
+on d.icdcode = t.icdcode  
+order by t.icompanyid,t.nooficdcode 

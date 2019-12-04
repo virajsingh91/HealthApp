@@ -372,7 +372,7 @@ String text = (String)request.getAttribute("text");
       <a class="underlineHover" href="SignIn.jsp">Already a member? Sign In</a>
     </div>
     <div id="formFooter">
-      <a class="underlineHover" href="ChangePassword.jsp">Forgot Password?</a>
+      <a class="underlineHover" href="ChangePassword.jsp">Change Password?</a>
     </div>
     <div id="formFooter">
       <a class="underlineHover" href="Signup.jsp">Don't have an account yet? Sign Up</a>

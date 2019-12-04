@@ -1,0 +1,14 @@
+With T as (select * from (select cr.crewid cid, cr.crewname cname, extract (year from (to_date(to_char(td.timeoftrip,'dd-MON-yyyy')))) as Yearv, 
+to_char((to_date(to_char(td.timeoftrip,'dd-MON-yyyy'))),'Month') as monthv,  
+count(td.tripid) as Nooftrips from trip_details td 
+join crews cr on cr.crewid = td.crewid 
+join case_details cd on cd.caseid = td.caseid 
+group by cr.crewid, cr.crewname,(extract (year from (to_date(to_char(td.timeoftrip,'dd-MON-yyyy'))))),to_char((to_date(to_char(td.timeoftrip,'dd-MON-yyyy'))),'Month'))) 
+SELECT cname,concat(concat(yearv,'-'),monthv) "Year and Month" ,Nooftrips,  
+(CASE 
+WHEN Nooftrips >= 4 THEN 'Gold Crew' 
+WHEN Nooftrips >=2 and Nooftrips <=3 THEN 'Silver Crew' 
+ELSE 'Bronze Crew' 
+END) AS "Crew Type" 
+from t  
+order by cid

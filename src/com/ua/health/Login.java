@@ -36,6 +36,7 @@ public class Login extends HttpServlet {
        session.setMaxInactiveInterval(5*60);
        //session.setAttribute("UserName", username);
        //InetAddress IP=InetAddress.getLocalHost();
+       String dec_query="";
        String ip = Inet4Address.getLocalHost().getHostAddress();
        System.out.println("My IP : " + ip);
 /*       Socket socket = new Socket();
@@ -76,7 +77,18 @@ public class Login extends HttpServlet {
             request.setAttribute("sid",sid);
             session.setAttribute("sid" , sid);
             session.setAttribute("pid" , pid);
-         }rs.close();
+            dec_query ="select decrypt('" + pass + "', 'keytestvalue') from dual";
+       		PreparedStatement stmtt = con.prepareStatement(dec_query); 		
+       		ResultSet rss = stmtt.executeQuery(dec_query);
+       		while(rss.next()){
+                   pass = rss.getString(1);
+                  
+       		}
+            
+            
+         }rs.close(); 
+        
+             
 			query1 = "select * from doctors where username ='" + username +"'";;
 			PreparedStatement stmt1 = con.prepareStatement(query1);
 			System.out.println("Querydoc :" + query1);
@@ -92,9 +104,17 @@ public class Login extends HttpServlet {
 	            request.setAttribute("pass",pass);
 	            request.setAttribute("docid",docid);
 	            session.setAttribute("docid" , docid);
-		}
+	            
+	            dec_query ="select decrypt('" + dpass + "', 'keytestvalue') from dual";
+	     		PreparedStatement stmtt1 = con.prepareStatement(dec_query); 		
+	     		ResultSet rss1 = stmtt1.executeQuery(dec_query);
+	     		while(rss1.next()){
+	                 dpass = rss1.getString(1);
+	     		}
+			}rs1.close();
+        
 		
-        rs1.close();
+
         con.close();
         
         
@@ -103,16 +123,16 @@ public class Login extends HttpServlet {
             e.printStackTrace();
         }
 
- 
+        /*session.setAttribute("user",user);
+        session.setAttribute("pass",pass);*/
         if((username.equals(user)) & (password.equals(pass))) {
         	FetchDataPatient fe = new FetchDataPatient();
         	HttpServletRequest reqq = fe.fetchdata(request);
         	request.getRequestDispatcher("welcomePage.jsp").forward(reqq, response);
-        }  
-        if((username.equals("admin")) & (password.equals("pass"))) {
-        	FetchDataPatient fe = new FetchDataPatient();
-        	HttpServletRequest reqq = fe.fetchdata(request);
-        	request.getRequestDispatcher("Query1.jsp").forward(reqq, response);
+        }  else if((username.equals("admin")) & (password.equals("pass"))) {
+        	/*FetchDataPatient fe = new FetchDataPatient();
+        	HttpServletRequest reqq = fe.fetchdata(request);*/
+        	request.getRequestDispatcher("adminHome.jsp").forward(request, response);
         } 
         else if((username.equals(duser)) & (password.equals(dpass))) {
         	FetchDetails f = new FetchDetails();

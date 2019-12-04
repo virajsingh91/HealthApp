@@ -12,18 +12,19 @@ public class FetchDataPatient {
 	
 	public HttpServletRequest fetchdata(HttpServletRequest request) {
 		try {
-			String [] sym = new String[100]; 
+			String [][] sym = new String[100][100]; 
 			int i=0;
 			Connect c = new Connect();
 			Connection con;
 			con = c.JDBCConnection();
 			//Get the Specializations
-			String query ="select name from symptoms";
+			String query ="select * from symptoms";
 			PreparedStatement stmtt = con.prepareStatement(query);
 			System.out.println("Query :" + query);
 			ResultSet rs = stmtt.executeQuery(query);
 			while(rs.next()){
-	            sym[i] = rs.getString("name");
+				sym[i][0] = rs.getString("symptomid");
+	            sym[i][1] = rs.getString("name");
 	            i=i+1;
 			}
 			request.setAttribute("length",i);

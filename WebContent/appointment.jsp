@@ -263,6 +263,9 @@ String text = (String)request.getAttribute("text");
 
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <form method="post" action="GoHome">
+ <input type="submit" value="Home" class="side_navbar_btn">
+  </form>
   <form method="post" action="Profile">
   <input type="submit" value="Profile" class="side_navbar_btn">
   </form>
@@ -287,6 +290,7 @@ String text = (String)request.getAttribute("text");
 <!-- <div class="content"> -->
 <div class = "center">
 <form method="post" action="CheckAppointment">
+<p>Please select the most suitable specialization for your case and the suitable date for an appointment, We'll quickly let you know the available slots for a doctor with such a specialization! &nbsp;</p>
   <select name="spec">
 <%for(int i=0;i < length;i++)
     {%>
@@ -309,7 +313,7 @@ String text = (String)request.getAttribute("text");
    
    <br>
    <p><b>Previously Booked Appointments: </b></p>
-   <br>
+   
 
     <table border="1">
     <thead>

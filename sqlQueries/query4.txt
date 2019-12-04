@@ -1,0 +1,21 @@
+WITH latest_date AS( 
+    SELECT err.employeeid, max(er.ratingdate) as maxdate  
+    FROM employee_ratings er JOIN employee_ratings_received err 
+        ON er.employeeratingid = err.employeeratingid 
+    GROUP BY err.employeeid 
+), 
+rankingByGroup AS ( 
+SELECT e.employeeid eid, e.firstname fname, e.lastname lname, er.ratingid rid, e.type type, 
+DENSE_RANK() OVER (PARTITION BY e.type  
+ORDER BY er.ratingid desc) as Rank 
+FROM employee_ratings_received err JOIN employee_ratings er 
+    ON  er.employeeratingid = err.employeeratingid 
+    JOIN employees e  
+        ON e.employeeid = err.employeeid 
+        JOIN latest_date 
+            ON latest_date.employeeid = e.employeeid 
+    WHERE er.ratingdate = latest_date.maxdate 
+) 
+SELECT r.eid as "EmployeeID", r.fname as "First Name", r.lname as "Last Name", r.rid as "Rating ID", r.type "Employee Type" 
+FROM rankingByGroup r 
+WHERE Rank = 1

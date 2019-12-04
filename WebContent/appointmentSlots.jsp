@@ -258,6 +258,9 @@ String appDate = (String)request.getAttribute("appDate");
 
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+   <form method="post" action="GoHome">
+ <input type="submit" value="Home" class="side_navbar_btn">
+  </form>
   <form method="post" action="Profile">
   <input type="submit" value="Profile" class="side_navbar_btn">
   </form>

@@ -136,7 +136,7 @@ margin-left: 38%;
 </script>
 </head>
 <body onload="disableBackButton()">
-
+<%String text = (String)request.getAttribute("text");  %>
 <nav class="navbar navbar-default top_nav">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -146,6 +146,9 @@ margin-left: 38%;
 </nav> 
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+   <form method="post" action="GoHome">
+ <input type="submit" value="Home" class="side_navbar_btn">
+  </form>
   <form method="post" action="Profile">
   <input type="submit" value="Profile" class="side_navbar_btn">
   </form>
@@ -169,6 +172,17 @@ Who will get more flu shots, Wildcats or Sun Devils? Protect yourself, your comm
 <iframe src="http://169.254.164.209:3000" height="645" width="900" name="Patient"></iframe>
 </div>
 
+<div class="left_pane col-lg-6">
+<!-- <iframe src="http://169.254.164.209:3000" height="645" width="900" name="Patient"></iframe> -->
+<h5> <%if(text != null ){
+    out.print(text);   
+   }%></h5>
+   <h5>Do you wish to end the chat with the Doctor?</h5>
+    <form method="post" action="EndChatPatient">
+      <input type="submit" value="End Chat"  >
+    </form>
+
+</div>
 
 
 <script>
