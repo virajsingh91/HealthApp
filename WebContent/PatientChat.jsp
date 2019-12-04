@@ -78,6 +78,18 @@ iframe {
 	display: block;
 }
 
+.left_pane
+{
+float:left;
+/* width: 50px;
+height: 50px;
+border: solid black 4px; */
+}
+
+.right_pane
+{
+float:right;
+}
 
 /*navbar*/
 .top_nav
@@ -168,21 +180,23 @@ margin-left: 38%;
 <span class="hamburger" onclick="openNav()">&#9776;</span><br>
 <marquee>Beat the Flu...and ASU!
 Who will get more flu shots, Wildcats or Sun Devils? Protect yourself, your community, and help us earn bragging rights!  #AZFluVaxChallenge</marquee>
-<div class="center">
-<iframe src="http://169.254.164.209:3000" height="645" width="900" name="Patient"></iframe>
-</div>
 
-<div class="left_pane col-lg-6">
-<!-- <iframe src="http://169.254.164.209:3000" height="645" width="900" name="Patient"></iframe> -->
+<!-- <div class="center">
+
+</div> -->
+
+<div  class="center">
+
+   <h5 class="left_pane col-lg-6">Do you wish to end the chat with the Doctor?</h5>
+    <form method="post" action="EndChatPatient">
+      <input type="submit" value="End Chat" class="right_pane col-lg-6" >
+    </form>
+<iframe src="http://169.254.164.209:3000" height="645" width="900" name="Patient"></iframe>
 <h5> <%if(text != null ){
     out.print(text);   
-   }%></h5>
-   <h5>Do you wish to end the chat with the Doctor?</h5>
-    <form method="post" action="EndChatPatient">
-      <input type="submit" value="End Chat"  >
-    </form>
+   }%></h5></div>
 
-</div>
+
 
 
 <script>

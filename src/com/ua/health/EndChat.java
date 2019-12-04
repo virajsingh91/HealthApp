@@ -35,7 +35,7 @@ public class EndChat extends HttpServlet {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-		text="<p style=\"color:red\">Chat Closed Successfully for Case" + caseid + " . Thanks Doc ! Good Job ! </p>";
+		text="<p style=\"color:green\">Chat Closed Successfully for Case" + caseid + " . Thanks Doc ! Good Job ! </p>";
 		request.setAttribute("text", text);
 		request.getRequestDispatcher("NewFile3.jsp").forward(request, response);
 		

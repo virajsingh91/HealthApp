@@ -161,11 +161,6 @@ String url = "http://" + localip + ":3000"; */
     </div>
   </div>
 </nav> 
-<div class="left_pane col-lg-6">
-<!-- <iframe src="http://169.254.164.209:3000" height="645" width="900" name="Patient"></iframe> -->
-<h5 style="text-align:center;"> <%if(text != null ){
-    out.print(text);   
-   }%></h5>
 <div id="mySidenav" class="sidenav">
 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 
@@ -195,7 +190,7 @@ String url = "http://" + localip + ":3000"; */
     out.print(text);   
    }%></h5>
   
-
+</div>
 
 
 <script>

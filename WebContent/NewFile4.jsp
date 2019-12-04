@@ -166,9 +166,9 @@ margin-left: 38%;
 </div>
 
 <span class="hamburger" onclick="openNav()">&#9776;</span><br>
-<marquee>Beat the Flu...and ASU!
+<!-- <marquee>Beat the Flu...and ASU!
 Who will get more flu shots, Wildcats or Sun Devils? Protect yourself, your community, and help us earn bragging rights!  #AZFluVaxChallenge</marquee>
-
+ -->
 <div class="left_pane col-lg-6">
 <!-- <iframe src="http://169.254.164.209:3000" height="645" width="900" name="Patient"></iframe> -->
 <h5> <%if(text != null ){
