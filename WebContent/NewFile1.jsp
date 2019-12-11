@@ -357,6 +357,9 @@ iframe {
 
 
 /*navbar*/
+.navbar-header{
+margin-left: 38%;
+}
 .top_nav
 {
     background-color: #000046;
@@ -387,6 +390,12 @@ margin-left: 50px;
     background-color: transparent;
     border-color: black;
     color:white;
+}
+.center {
+  margin: auto;
+  width: 50%;
+  border: 3px  solid #000046;
+  padding: 10px;
 }
     
     </style>
@@ -662,8 +671,8 @@ int symptomlength = (int)request.getAttribute("symptomlength");
         </form>
         </div>
         <div class="right_pane col-lg-6">
-    <iframe src="<%= url %>" height="645" width="710" name="Doctor"  ></iframe>
-    <!-- "http://192.168.0.15:3000" -->
+    <iframe src="http://52.151.239.178:3000" height=645 width=710 name="Doctor"  ></iframe>
+    <!-- "http://169.254.164.209:3000" -->
     </div>
     </div>
     </div>

@@ -1,48 +1,47 @@
-WITH monthdate as ( 
-    SELECT add_months(sysdate,-24) as mindate 
-    FROM dual 
-), 
-listmonths (lmonth) AS ( 
-      SELECT mindate as lmonth 
-      FROM monthdate 
-      UNION ALL 
-      SELECT add_months(lmonth,1) 
-      FROM listmonths 
-      WHERE add_months(lmonth,1) <= sysdate+1 
-), 
-monyear as ( 
-    SELECT extract(year from lmonth) as lyear, extract(month from lmonth) as lmonth 
-    FROM listmonths 
-), 
-casedata as ( 
-    SELECT c.caseid as Cases,extract(year from (cast(c.datetime as date))) as iyear, extract(month from (cast(c.datetime as date))) as imonth 
-    FROM case_details c 
-    JOIN doctors d ON c.doctorid = d.doctorid 
-), 
-countcases as ( 
-    SELECT iyear, imonth, count(*) as NoofCases 
-    FROM casedata 
-    GROUP BY iyear, imonth 
-), 
-rawstatistics as ( 
-    SELECT lyear, lmonth, coalesce(NoofCases,0) noofcases 
-    FROM monyear my 
-    LEFT OUTER JOIN countcases cc on my.lyear = cc.iyear and my.lmonth = cc.imonth 
-), 
-monstatistics as ( 
-    SELECT lyear, lmonth, noofcases, 
-        LEAD(noofcases,1) OVER (ORDER by lyear,lmonth) AS nmc, 
-        LAG (noofcases,1) OVER (ORDER by lyear,lmonth) AS lmc, 
-        LAG (noofcases,12) OVER (ORDER by lyear,lmonth) AS lyc 
-    FROM rawstatistics 
-) 
-SELECT lyear ||'-'|| to_char(to_date(lmonth,'MM'),'Month') as "Year and Month", 
-  noofcases AS "No of Cases", 
-  coalesce(to_char(lyc),'Not Available') as "No of Cases Last Year", 
-  coalesce(to_char(lmc),'Not Available') as "No of Cases Last Month", 
-  coalesce(to_char(nmc),'Not Available') as "No of Cases Next Month", 
-  coalesce(to_char(noofcases-lyc),'N/A') as "Annual change", 
-  coalesce(to_char(noofcases-lmc),'N/A') as "Monthly change" 
-FROM monstatistics 
-ORDER BY lyear desc, lmonth desc 
-FETCH FIRST 24 rows only
+WITH monthdate AS (  
+    SELECT add_months(sysdate,-24) AS mindate  
+    FROM dual  
+),  
+listmonths (lmonth) AS (  
+      SELECT mindate AS lmonth  
+      FROM monthdate  
+      UNION ALL  
+      SELECT add_months(lmonth,1)  
+      FROM listmonths  
+      WHERE add_months(lmonth,1) <= sysdate+1  
+),  
+monyear AS (   
+    SELECT extract(year from lmonth) AS lyear, extract(month from lmonth) AS lmonth  
+    FROM listmonths  
+),  
+casedata AS ( 
+    SELECT c.caseid as Cases,EXTRACT(YEAR FROM (CAST(c.datetime AS DATE))) AS iyear,  
+    EXTRACT(MONTH FROM (CAST(c.datetime AS DATE))) AS imonth  
+    FROM case_details c  
+    JOIN doctors d ON c.doctorid = d.doctorid  
+),  
+countcases AS (  
+    SELECT iyear, imonth, COUNT(*) AS NoofCases  
+    FROM casedata  
+    GROUP BY iyear, imonth  
+),   
+rawstatistics AS (  
+    SELECT lyear, lmonth, COALESCE(NoofCases,0) noofcases  
+    FROM monyear my  
+    LEFT OUTER JOIN countcases cc on my.lyear = cc.iyear AND my.lmonth = cc.imonth  
+),  
+monstatistics AS (  
+    SELECT lyear, lmonth, noofcases,  
+        LEAD(noofcases,1) OVER (ORDER BY lyear,lmonth) AS nmc,  LAG (noofcases,1) OVER (ORDER BY lyear,lmonth) AS lmc,  
+        LAG (noofcases,12) OVER (ORDER BY lyear,lmonth) AS lyc  
+    FROM rawstatistics  
+)  
+SELECT lyear ||'-'|| to_char(TO_DATE(lmonth,'MM'),'Month') as "Year and Month", noofcases AS "No of Cases",  
+  COALESCE(to_char(lyc),'Not Available') AS "No of Cases Last Year",  
+  COALESCE(to_char(lmc),'Not Available') AS "No of Cases Last Month",  
+  COALESCE(to_char(nmc),'Not Available') AS "No of Cases Next Month",  
+  COALESCE(to_char(noofcases-lyc),'Not Available') AS "Annual change",  
+  COALESCE(to_char(noofcases-lmc),'Not Available') AS "Monthly change"  
+FROM monstatistics  
+ORDER BY lyear DESC, lmonth DESC  
+FETCH FIRST 24 ROWS ONLY

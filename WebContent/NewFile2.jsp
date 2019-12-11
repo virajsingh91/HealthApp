@@ -195,7 +195,7 @@ String url = "http://" + localip + ":3000";
 
 </div>
  <div class="right_pane col-lg-6">
-    <iframe src="<%= url %>" height="645" width="710" name="Doctor"  ></iframe>
+    <iframe src="http://52.151.239.178:3000" height="645" width="710" name="Doctor"  ></iframe>
     <!-- "http://192.168.0.15:3000" -->
     </div>
 

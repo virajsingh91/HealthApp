@@ -206,11 +206,11 @@ Who will get more flu shots, Wildcats or Sun Devils? Protect yourself, your comm
 <hr style="margin-top:-2px;">
 <div class="container bootstrap snippet" >
     <div class="row">
-        <div class="col-sm-10">
+         <div class="col-sm-10">
             <h1><%=fname%> <%=lname%></h1></div>
         <div class="col-sm-2">
-        <span id="firstName"><%=fname%></span>
-<span id="lastName"><%=lname%></span>
+        <span id="firstName" style="color:white;"><%=fname%></span>
+<span id="lastName" style="color:white;"><%=lname%></span> 
 <div id="profileImage"></div>
 <!--             <a href="/users" class="pull-right"><img title="profile image" class="img-circle img-responsive" src="https://bootdey.com/img/Content/avatar/avatar1.png"></a>
  -->        </div> 
@@ -221,9 +221,9 @@ Who will get more flu shots, Wildcats or Sun Devils? Protect yourself, your comm
 
             <ul class="list-group">
                 <li class="list-group-item text-muted">Profile</li>
-                <li class="list-group-item text-right"><span class="pull-left"><strong>Blood Group</strong></span>  <%=bloodgroup%></li>
-                <li class="list-group-item text-right"><span class="pull-left"><strong>Gender</strong></span>  <%=gender%></li>
-                <li class="list-group-item text-right"><span class="pull-left"><strong>Date of Birth</strong></span> <%=dob%></li>
+                <li class="list-group-item text-right"><span class="pull-left"><strong>Blood Group :</strong></span>  <%=bloodgroup%></li>
+                <li class="list-group-item text-right"><span class="pull-left"><strong>Gender :</strong></span>  <%=gender%></li>
+                <li class="list-group-item text-right"><span class="pull-left"><strong>Date of Birth : </strong></span> <%=dob%></li>
 
             </ul>
 
@@ -456,7 +456,7 @@ Who will get more flu shots, Wildcats or Sun Devils? Protect yourself, your comm
 <!--                             <div class="col-xs-6">
  -->                                <label for="password">
                                     <h4>Password</h4></label>
-                                <input type="password" class="form-control" name="address" id="address" placeholder="Enter Address" title="enter your Address if any.">
+                                <input type="password" class="form-control"  id="address"  >
                             </div>
                         </div>
                  <!--  <div class=row>

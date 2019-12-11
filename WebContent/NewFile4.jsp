@@ -170,7 +170,7 @@ margin-left: 38%;
 Who will get more flu shots, Wildcats or Sun Devils? Protect yourself, your community, and help us earn bragging rights!  #AZFluVaxChallenge</marquee>
  -->
 <div class="left_pane col-lg-6">
-<!-- <iframe src="http://169.254.164.209:3000" height="645" width="900" name="Patient"></iframe> -->
+<!-- <iframe src="http://52.151.239.178:3000" height="645" width="900" name="Patient"></iframe> -->
 <h5> <%if(text != null ){
     out.print(text);   
    }%></h5>

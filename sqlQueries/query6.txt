@@ -1,21 +1,23 @@
-WITH s AS (SELECT * FROM(SELECT p.patientid pid, CONCAT(CONCAT(s.firstname, ' '),s.lastname) pname,s.type stype,s.name sname, 
-COUNT(c.caseid) noofcase,EXTRACT(year from c.datetime) yd, to_char(c.datetime,'Month') md ,CONCAT(CONCAT(m.productname,'-'),md.drugs) medicine  
-FROM case_details c 
-JOIN patients p ON p.patientid = c.patientid 
-JOIN case_symptoms cs ON cs.caseid = c.caseid 
-JOIN symptoms s ON s.symptomid = cs.symptomid 
-JOIN prescriptions pr ON c.caseid = pr.caseid 
-JOIN drug_details dd ON dd.prescriptiionid = pr.prescriptionid 
-JOIN medicines m ON m.medicineid = dd.medicineid 
-JOIN medicine_drugs md ON md.medicineid = m.medicineid  
-JOIN students s ON s.studentid = p.studentid 
-WHERE (SELECT sysdate FROM dual) - (TO_DATE(to_char(c.datetime,'dd-MON-yyyy'))) <=365 and s.type IN ('Pathology','Pulmonary','Ear,Nose and Throat','General','Gastrointestinal') 
-GROUP BY p.patientid,s.name,s.type,extract(year from c.datetime),to_char(c.datetime,'Month'),m.productname,md.drugs,s.firstname,s.lastname 
-ORDER BY p.patientid)) 
+WITH s AS (SELECT * FROM(SELECT p.patientid pid, CONCAT(CONCAT(s.firstname, ' '),s.lastname) pname,s.type stype,s.name sname,  
+COUNT(c.caseid) noofcase,EXTRACT(year from c.datetime) yd, to_char(c.datetime,'Month') md, 
+CONCAT(CONCAT(m.productname,'-'),md.drugs) medicine   
+FROM case_details c  
+JOIN patients p ON p.patientid = c.patientid  
+JOIN case_symptoms cs ON cs.caseid = c.caseid  
+JOIN symptoms s ON s.symptomid = cs.symptomid  
+JOIN prescriptions pr ON c.caseid = pr.caseid   
+JOIN drug_details dd ON dd.prescriptiionid = pr.prescriptionid  
+JOIN medicines m ON m.medicineid = dd.medicineid  
+JOIN medicine_drugs md ON md.medicineid = m.medicineid   
+JOIN students s ON s.studentid = p.studentid  
+WHERE (SELECT sysdate FROM dual) - (TO_DATE(to_char(c.datetime,'dd-MON-yyyy'))) <=365 and s.type NOT IN ('Psychiatric')  
+GROUP BY p.patientid,s.name,s.type,extract(year from c.datetime),to_char(c.datetime,'Month'),m.productname,md.drugs,s.firstname, 
+s.lastname  
+ORDER BY p.patientid))  
 
-SELECT CONCAT(CONCAT(yd,'-'),md) as "Year and Month",pid AS "Patient ID",pname AS "Patient Name", 
-stype AS "Symptom Type",sname AS "Symptom Name",noofcase AS "No of Cases",medicine AS "Medicine-Drug", 
-(CASE WHEN noofcase =2 THEN 'Rarely Appropriate' 
-WHEN noofcase >= 3 and noofcase <5 THEN 'Not Appropriate' 
-ELSE 'Appropriate' 
+SELECT CONCAT(CONCAT(yd,'-'),md) as "Year and Month",pid AS "Patient ID",pname AS "Patient Name",  
+stype AS "Symptom Type",sname AS "Symptom Name",noofcase AS "No of Cases",medicine AS "Medicine-Drug",  
+(CASE WHEN noofcase = 2 THEN 'Rarely Appropriate'  
+WHEN noofcase >= 3 THEN 'Not Appropriate'  
+ELSE 'Appropriate'  
 END) AS "Diagnosis Appropriateness" FROM s

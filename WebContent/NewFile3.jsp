@@ -185,7 +185,7 @@ String url = "http://" + localip + ":3000"; */
 
 <span class="hamburger" onclick="openNav()">&#9776;</span><br>
 <div class="left_pane col-lg-6">
-<!-- <iframe src="http://169.254.164.209:3000" height="645" width="900" name="Patient"></iframe> -->
+ <!-- <iframe src="http://52.151.239.178:3000" height="645" width="900" name="Patient"></iframe>  -->
 <h5 style="text-align:center;"> <%if(text != null ){
     out.print(text);   
    }%></h5>

@@ -23,7 +23,10 @@ public class Analysis extends HttpServlet {
 		
 		String runAnalysis = request.getParameter("runAnalysis");
 		System.out.println("runanalysis : "+runAnalysis);
-		String filename = "C:\\Users\\Romy\\eclipse-workspace\\HealthApp\\sqlQueries\\query" + runAnalysis + ".txt";
+		String filePath="";
+		System.out.println("filePath : "+filePath);
+		filePath= System.getenv("UAHealthAppQueryPath");
+		String filename = "C:\\Users\\bitsplease\\Downloads\\sqlQueries\\query" + runAnalysis + ".txt";
 		String query="";
 		String col_name="";
 		StringBuilder sb = new StringBuilder();

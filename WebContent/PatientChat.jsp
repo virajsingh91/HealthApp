@@ -130,9 +130,13 @@ margin-left: 38%;
 .center {
   margin: auto;
   width: 61%;
-  border: 3px  solid #000046;
+ 
+/*   top:0;
+  bottom: 0; */
+  /* border: 3px  solid #000046; */
   padding: 10px;
 }
+
  marquee{
          font-size: 20px;
          font-weight: 600;
@@ -185,13 +189,15 @@ Who will get more flu shots, Wildcats or Sun Devils? Protect yourself, your comm
 
 </div> -->
 
-<div  class="center">
+<div  class="center" >
 
    <h5 class="left_pane col-lg-6">Do you wish to end the chat with the Doctor?</h5>
     <form method="post" action="EndChatPatient">
-      <input type="submit" value="End Chat" class="right_pane col-lg-6" >
+      <input type="submit" value="End Chat"  >
     </form>
-<iframe src="http://169.254.164.209:3000" height="645" width="900" name="Patient"></iframe>
+    
+<iframe src="http://52.151.239.178:3000" height=645 width=710  name="Patient"></iframe>
+<!-- http://169.254.164.209:3000 -->
 <h5> <%if(text != null ){
     out.print(text);   
    }%></h5></div>
