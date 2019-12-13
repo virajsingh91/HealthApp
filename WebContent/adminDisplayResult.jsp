@@ -171,6 +171,7 @@ margin-left: 38%;
 <%
 String thead = (String)request.getAttribute("thead"); 
 String tbody = (String)request.getAttribute("tbody"); 
+String text = (String)request.getAttribute("text");
 
 %>
 <nav class="navbar navbar-default top_nav">
@@ -219,7 +220,7 @@ String tbody = (String)request.getAttribute("tbody");
     <option value=7>Student Subsidy Eligibility</option>
     <option value=8>Patient Historical Statistics</option>
     <option value=9>Pharmacy Medicine Availability</option>
-    <option value=10> Time vs Symptom Statistics</option>
+    <option value=10>Time vs Symptom Statistics</option>
 <!--     <option value=8>Query8</option>
     <option value=9>Query9</option> -->
  
@@ -229,6 +230,12 @@ String tbody = (String)request.getAttribute("tbody");
   </div>
   <br>
   <div>
+  
+  <%if(text != null ){
+    out.print(text);   
+   }
+   else {
+   }%>
 <!-- <iframe src="http://169.254.164.209:3000" height="645" width="900" name="Patient"></iframe> -->
     <table border="1" class="center" id="customers">
     <thead>

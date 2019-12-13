@@ -36,7 +36,7 @@ public class CrudInsertLabs extends HttpServlet {
 		stmt3.setString(6, Street);		
 		stmt3.setString(7, Email);	
 		stmt3.execute();
-		text="<p style=\"color:green\">Record Inserted Successfully for Case </p>";
+		text="<p style=\"color:green\">Record Inserted Successfully </p>";
 		
 	}catch (SQLException e) {
         // TODO Auto-generated catch block

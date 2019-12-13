@@ -26,6 +26,39 @@ public class Analysis extends HttpServlet {
 		String filePath="";
 		System.out.println("filePath : "+filePath);
 		filePath= System.getenv("UAHealthAppQueryPath");
+		String text="";
+		if (runAnalysis.equals("1")) {
+			text="<p style=\"color:blaclk\"><b>Case Count Analysis</b></p><br>";
+			
+		}else if (runAnalysis.equals("2")) {
+			text="<p style=\"color:blaclk\"><b>Symptom and Drug Pattern</b></p><br>";
+			
+		}else if (runAnalysis.equals("3")) {
+			text="<p style=\"color:blaclk\"><b>Crew Classification</b></p><br>";
+			
+		}else if (runAnalysis.equals("4")) {
+			text="<p style=\"color:blaclk\"><b>Employee Ranking</b></p><br>";
+			
+		}else if (runAnalysis.equals("5")) {
+			text="<p style=\"color:blaclk\"><b>Diagnosis Insured</b></p><br>";
+			
+		}else if (runAnalysis.equals("6")) {
+			text="<p style=\"color:blaclk\"><b>Diagnosis Appropriatenessy</b></p><br>";
+			
+		}else if (runAnalysis.equals("7")) {
+			text="<p style=\"color:blaclk\"><b>Student Subsidy Eligibility</b></p><br>";
+			
+		}else if (runAnalysis.equals("8")) {
+			text="<p style=\"color:blaclk\"><b>Patient Historical Statistics</b></p><br>";
+			
+		}else if (runAnalysis.equals("9")) {
+			text="<p style=\"color:blaclk\"><b>Pharmacy Medicine Availability</b></p><br>";
+			
+		}else if (runAnalysis.equals("10")) {
+			text="<p style=\"color:blaclk\"><b>Time vs Symptom Statistics</b></p><br>";
+			
+		}
+		
 		String filename = "C:\\Users\\bitsplease\\Downloads\\sqlQueries\\query" + runAnalysis + ".txt";
 		String query="";
 		String col_name="";
@@ -95,7 +128,7 @@ public class Analysis extends HttpServlet {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-		
+		request.setAttribute("text",text);
         request.getRequestDispatcher("adminDisplayResult.jsp").forward(request, response); 
 	}
 }

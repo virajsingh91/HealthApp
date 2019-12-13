@@ -21,7 +21,7 @@ public class Crud extends HttpServlet {
             HttpServletResponse response) throws ServletException, IOException {
 		String Crud = request.getParameter("Crud");
 		//filePath= System.getenv("UAHealthAppQueryPath");
-		String filename = "C:\\Users\\Romy\\eclipse-workspace\\HealthApp\\sqlQueries\\Crudquery" + Crud + ".txt";
+		String filename = "C:\\Users\\bitsplease\\Downloads\\sqlQueries\\Crudquery" + Crud + ".txt";
 		//C:\Users\Romy\eclipse-workspace\HealthApp\sqlQueries
 		//C:\\Users\\bitsplease\\Downloads\\sqlQueries\\Crudquery
 		String query="";

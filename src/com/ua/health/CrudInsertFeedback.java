@@ -29,7 +29,7 @@ public class CrudInsertFeedback extends HttpServlet {
 		stmt3.setString(3, avail);
 
 		stmt3.execute();
-		text="<p style=\"color:green\">Record Inserted Successfully for Case </p>";
+		text="<p style=\"color:green\">Record Inserted Successfully</p>";
 		
 	}catch (SQLException e) {
         // TODO Auto-generated catch block
