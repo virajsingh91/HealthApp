@@ -148,43 +148,33 @@ margin-left: 38%;
 </nav> 
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-      <form method="post" action="adminHome.jsp">
+    <form method="post" action="adminHome.jsp">
       <input type="submit" value="Home" class="side_navbar_btn">
     </form>
   <form method="post" action="Crud.jsp">
       <input type="submit" value="Crud Ops" class="side_navbar_btn">
     </form>
- <!--  <form method="post" action="Profile">
-  <input type="submit" value="Profile" class="side_navbar_btn">
-  </form>
-  <a href="#">Profile</a>
- <form method="post" action="CaseHistory">
- <input type="submit" value="Case History" class="side_navbar_btn">
-  </form>
-  <a href="#">Case History</a>
-   <form method="post" action="GetSpecializations">
- <input type="submit" value="Book Appointment" class="side_navbar_btn">
- </form> -->
- <form method="post" action="Logout">
+  <form method="post" action="Logout">
       <input type="submit" value="Logout" class="side_navbar_btn">
     </form>
 </div>
 
 <span class="hamburger" onclick="openNav()">&#9776;</span><br>
-
+<%
+String text = (String)request.getAttribute("text"); 
+%>
 <div class="center">
-<!-- <iframe src="http://169.254.164.209:3000" height="645" width="900" name="Patient"></iframe> -->
-<form method="post" action="Analysis">
-<p><b>Select Analysis Query to Run &nbsp;</b></p>
-  <select name="runAnalysis">
+<form method="post" action="Crud">
+<p><b>Select Operation &nbsp;</b></p>
+  <select name="Crud">
 
-    <option value=1>Case Count Analysis</option>
-    <option value=2>Symptom and Drug Pattern</option>
-    <option value=3>Crew Classification</option>
-    <option value=4>Employee Ranking</option>
-    <option value=5>Diagnosis Insured</option>
+    <option value=1>Pharmacy</option>
+    <option value=2>Delivery Organizations</option>
+    <option value=3>Labs</option>
+    <option value=4>Ambulance</option>
+<!--     <option value=5>Diagnosis Insured</option>
     <option value=6>Diagnosis Appropriateness</option>
-    <option value=7>Student Subsidy Eligibility</option>
+    <option value=7>Student Subsidy Eligibility</option> -->
 <!--     <option value=8>Query8</option>
     <option value=9>Query9</option> -->
  
@@ -195,6 +185,33 @@ margin-left: 38%;
       <input type="submit" value="Submit" >
      
     </form>
+    <br>
+    <form method="post" action="CrudInsertForm">
+<p><b>Insert Operation &nbsp;</b></p>
+  <select name="CrudInsert">
+
+    <option value=1>Pharmacy</option>
+    <option value=2>Delivery Organizations</option>
+    <option value=3>Labs</option>
+    <option value=4>Ambulance</option>
+<!--     <option value=5>Diagnosis Insured</option>
+    <option value=6>Diagnosis Appropriateness</option>
+    <option value=7>Student Subsidy Eligibility</option> -->
+<!--     <option value=8>Query8</option>
+    <option value=9>Query9</option> -->
+ 
+  
+  </select>&nbsp;&nbsp;
+   
+  
+      <input type="submit" value="Submit" >
+     
+    </form><br>
+     <%if(text != null ){
+    out.print(text);   
+   }
+   else {
+   }%><br>
 </div>
 
 

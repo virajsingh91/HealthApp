@@ -14,19 +14,16 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-public class Analysis extends HttpServlet {
+public class Crud extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
-		
-		String runAnalysis = request.getParameter("runAnalysis");
-		System.out.println("runanalysis : "+runAnalysis);
-		String filePath="";
-		System.out.println("filePath : "+filePath);
-		filePath= System.getenv("UAHealthAppQueryPath");
-		String filename = "C:\\Users\\bitsplease\\Downloads\\sqlQueries\\query" + runAnalysis + ".txt";
+		String Crud = request.getParameter("Crud");
+		//filePath= System.getenv("UAHealthAppQueryPath");
+		String filename = "C:\\Users\\Romy\\eclipse-workspace\\HealthApp\\sqlQueries\\Crudquery" + Crud + ".txt";
+		//C:\Users\Romy\eclipse-workspace\HealthApp\sqlQueries
+		//C:\\Users\\bitsplease\\Downloads\\sqlQueries\\Crudquery
 		String query="";
 		String col_name="";
 		StringBuilder sb = new StringBuilder();
@@ -54,18 +51,13 @@ public class Analysis extends HttpServlet {
 	        e.printStackTrace();
 	    }
 		query= query.replaceAll("\\r\\n", "\\s");
+		int i=0;			
+		String [][] output = new String [1000][1000];
 		try {
-			HttpSession session = request.getSession();
-			String pid=(String)session.getAttribute("pid");
-			int i=0;			
-			String [][] output = new String [1000][1000];
-            Connect c = new Connect();
+			Connect c = new Connect();
     		Connection con;
     		con = c.JDBCConnection();
-    		            	
-    		//Get Case History for the patient
-    		
-			PreparedStatement stmt = con.prepareStatement(query);
+    		PreparedStatement stmt = con.prepareStatement(query);
 			ResultSet rs1 = stmt.executeQuery(query);
 			ResultSetMetaData md = rs1.getMetaData();
 			int col = md.getColumnCount();
@@ -75,14 +67,20 @@ public class Analysis extends HttpServlet {
 				  thead= thead + "<th>" + col_name + "</th>" ;
 				  System.out.println(col_name);
 			}
+			thead= thead + "<th>Actions</th>";
 			while(rs1.next()){ 					
-				tbody= tbody + "<tr>";
+				tbody= tbody + "<form method=\"post\" action=\"DeleteRow" + Crud + "\"><tr>";
 				for (int k=0; k<col ; k++) {
 				output[i][k] = rs1.getString(k+1);
-				tbody = tbody + "<td>" + output[i][k] + "</td>" ;
+				if (k==0) {
+				//tbody = tbody + "<td contenteditable='true' name=\"ID\" value =" + output[i][k] + ">" + output[i][k] +"</td>" ;
+					tbody = tbody + "<td><input type=\"text\" name=\"ID\" value=" + output[i][k] + "></td>" ;
 	            //System.out.println("output : " + output[i][k]);
+				}else {
+					tbody = tbody + "<td contenteditable='true'>" + output[i][k] + "</td>" ;
 				}
-				tbody= tbody + "</tr>";
+				}
+				tbody= tbody + "<td><input type=\"submit\" value=\"Delete\" ></td></tr></form>";
 	            i=i+1;
 	        }
 			thead = thead + "</tr>";
@@ -90,12 +88,11 @@ public class Analysis extends HttpServlet {
 			request.setAttribute("thead",thead);
 			request.setAttribute("tbody",tbody);
 			System.out.println(thead+tbody);
-		
-		} catch (SQLException e) {
+    		
+		}catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-        }
-		
-        request.getRequestDispatcher("adminDisplayResult.jsp").forward(request, response); 
 	}
+		request.getRequestDispatcher("CrudSelectDisplay.jsp").forward(request, response);
+}
 }

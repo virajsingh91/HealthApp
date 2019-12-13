@@ -116,6 +116,15 @@ margin-left: 38%;
     color:white;
 }
 .center {
+  margin: left;
+  table-layout: fixed;
+  width: 100%;
+  border: 3px  solid #000046;
+  padding: 10px;
+  overflow-wrap: break-word;
+}
+
+.center1 {
   margin: auto;
   width: 27%;
   border: 3px  solid #000046;
@@ -127,8 +136,29 @@ margin-left: 38%;
          color: #000046;
          font-family: sans-serif;
         }
-        
+  /* table css from w3 schools , source : https://www.w3schools.com/css/tryit.asp?filename=trycss_table_fancy */
+ #customers {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
 
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #000046;
+  color: white;
+}
 </style>
 <script type="text/javaScript">
 	function disableBackButton() {
@@ -138,7 +168,11 @@ margin-left: 38%;
 </script>
 </head>
 <body onload="disableBackButton()">
+<%
+String thead = (String)request.getAttribute("thead"); 
+String tbody = (String)request.getAttribute("tbody"); 
 
+%>
 <nav class="navbar navbar-default top_nav">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -154,7 +188,7 @@ margin-left: 38%;
   <form method="post" action="Crud.jsp">
       <input type="submit" value="Crud Ops" class="side_navbar_btn">
     </form>
- <!--  <form method="post" action="Profile">
+<!--   <form method="post" action="Profile">
   <input type="submit" value="Profile" class="side_navbar_btn">
   </form>
   <a href="#">Profile</a>
@@ -172,19 +206,18 @@ margin-left: 38%;
 
 <span class="hamburger" onclick="openNav()">&#9776;</span><br>
 
-<div class="center">
-<!-- <iframe src="http://169.254.164.209:3000" height="645" width="900" name="Patient"></iframe> -->
-<form method="post" action="Analysis">
-<p><b>Select Analysis Query to Run &nbsp;</b></p>
-  <select name="runAnalysis">
+<div class="center1">
+<form method="post" action="Crud">
+<p><b>Select Operation &nbsp;</b></p>
+  <select name="Crud">
 
-    <option value=1>Case Count Analysis</option>
-    <option value=2>Symptom and Drug Pattern</option>
-    <option value=3>Crew Classification</option>
-    <option value=4>Employee Ranking</option>
-    <option value=5>Diagnosis Insured</option>
+    <option value=1>Pharmacy</option>
+    <option value=2>Delivery Organizations</option>
+    <option value=3>Labs</option>
+    <option value=4>Ambulance</option>
+<!--     <option value=5>Diagnosis Insured</option>
     <option value=6>Diagnosis Appropriateness</option>
-    <option value=7>Student Subsidy Eligibility</option>
+    <option value=7>Student Subsidy Eligibility</option> -->
 <!--     <option value=8>Query8</option>
     <option value=9>Query9</option> -->
  
@@ -195,6 +228,44 @@ margin-left: 38%;
       <input type="submit" value="Submit" >
      
     </form>
+     
+    <form method="post" action="CrudInsertForm"><br>
+<p><b>Insert Operation &nbsp;</b></p>
+  <select name="CrudInsert">
+
+    <option value=1>Pharmacy</option>
+    <option value=2>Delivery Organizations</option>
+    <option value=3>Labs</option>
+    <option value=4>Ambulance</option>
+<!--     <option value=5>Diagnosis Insured</option>
+    <option value=6>Diagnosis Appropriateness</option>
+    <option value=7>Student Subsidy Eligibility</option> -->
+<!--     <option value=8>Query8</option>
+    <option value=9>Query9</option> -->
+ 
+  
+  </select>&nbsp;&nbsp;
+   
+  
+      <input type="submit" value="Submit" >
+     
+    </form>
+  </div>
+  <br>
+  <div>
+<!-- <iframe src="http://169.254.164.209:3000" height="645" width="900" name="Patient"></iframe> -->
+    <table border="1" class="center" id="customers">
+    <thead>
+          
+       <%= thead %>
+      
+    </thead>
+    <tbody>
+    <%= tbody %>
+</tbody>
+</table>
+
+
 </div>
 
 

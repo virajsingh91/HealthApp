@@ -182,6 +182,12 @@ String tbody = (String)request.getAttribute("tbody");
 </nav> 
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <form method="post" action="adminHome.jsp">
+      <input type="submit" value="Home" class="side_navbar_btn">
+    </form>
+  <form method="post" action="Crud.jsp">
+      <input type="submit" value="Crud Ops" class="side_navbar_btn">
+    </form>
 <!--   <form method="post" action="Profile">
   <input type="submit" value="Profile" class="side_navbar_btn">
   </form>

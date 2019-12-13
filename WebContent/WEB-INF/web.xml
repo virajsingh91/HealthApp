@@ -129,4 +129,84 @@
   <servlet-name>EndChatPatient</servlet-name>
   <url-pattern>/EndChatPatient</url-pattern>
 </servlet-mapping>
+<servlet>
+ <servlet-name>Crud</servlet-name>
+  <servlet-class>com.ua.health.Crud</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>Crud</servlet-name>
+  <url-pattern>/Crud</url-pattern>
+</servlet-mapping>
+<servlet>
+ <servlet-name>CrudInsertForm</servlet-name>
+  <servlet-class>com.ua.health.CrudInsertForm</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>CrudInsertForm</servlet-name>
+  <url-pattern>/CrudInsertForm</url-pattern>
+</servlet-mapping>
+<servlet>
+ <servlet-name>CrudInsert</servlet-name>
+  <servlet-class>com.ua.health.CrudInsert</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>CrudInsert</servlet-name>
+  <url-pattern>/CrudInsert</url-pattern>
+</servlet-mapping>
+<servlet>
+ <servlet-name>CrudInsertMedicine</servlet-name>
+  <servlet-class>com.ua.health.CrudInsertMedicine</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>CrudInsertMedicine</servlet-name>
+  <url-pattern>/CrudInsertMedicine</url-pattern>
+</servlet-mapping>
+<servlet>
+ <servlet-name>CrudInsertLabs</servlet-name>
+  <servlet-class>com.ua.health.CrudInsertLabs</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>CrudInsertLabs</servlet-name>
+  <url-pattern>/CrudInsertLabs</url-pattern>
+</servlet-mapping>
+<servlet>
+ <servlet-name>CrudInsertFeedback</servlet-name>
+  <servlet-class>com.ua.health.CrudInsertFeedback</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>CrudInsertFeedback</servlet-name>
+  <url-pattern>/CrudInsertFeedback</url-pattern>
+</servlet-mapping>
+<servlet>
+ <servlet-name>DeleteRow1</servlet-name>
+  <servlet-class>com.ua.health.DeleteRow1</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>DeleteRow1</servlet-name>
+  <url-pattern>/DeleteRow1</url-pattern>
+</servlet-mapping>
+<servlet>
+ <servlet-name>DeleteRow2</servlet-name>
+  <servlet-class>com.ua.health.DeleteRow2</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>DeleteRow2</servlet-name>
+  <url-pattern>/DeleteRow2</url-pattern>
+</servlet-mapping>
+<servlet>
+ <servlet-name>DeleteRow3</servlet-name>
+  <servlet-class>com.ua.health.DeleteRow3</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>DeleteRow3</servlet-name>
+  <url-pattern>/DeleteRow3</url-pattern>
+</servlet-mapping>
+<servlet>
+ <servlet-name>DeleteRow4</servlet-name>
+  <servlet-class>com.ua.health.DeleteRow4</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>DeleteRow4</servlet-name>
+  <url-pattern>/DeleteRow4</url-pattern>
+</servlet-mapping>
 </web-app>
