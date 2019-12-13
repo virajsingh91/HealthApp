@@ -165,7 +165,7 @@ int length = (int)request.getAttribute("length");
  <input type="submit" value="Case History" class="side_navbar_btn">
   </form>
 <!--   <a href="#">Case History</a> -->
-   <form method="post" action="CheckAppointment">
+   <form method="post" action="GetSpecializations">
  <input type="submit" value="Book Appointment" class="side_navbar_btn" >
  </form>
  <form method="post" action="Logout">

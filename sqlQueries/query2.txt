@@ -1,20 +1,47 @@
-With sym as ( select * from (select distinct md.drugs drugnames, s.name sname, s.type stype, count(c.caseid) NoofCases,extract(month from c.datetime) monthvalue, m.medicineid medicineid,m.productname medicines 
-from symptoms s 
-join case_symptoms cs on cs.symptomid = s.symptomid 
-join case_details c on c.caseid = cs.caseid 
-join prescriptions p on c.caseid = p.caseid 
-join drug_details dd on p.prescriptionid = dd.prescriptiionid 
-join medicines m on m.medicineid = dd.medicineid 
-join medicine_drugs md on m.medicineid = md.medicineid 
-where s.type NOT IN ('Psychiatric') 
-group by s.name,s.type,extract(month from c.datetime),m.productname,m.medicineid,md.drugs)), 
+WITH casenum AS   
  
-drugdetail as (select * from (SELECT distinct medicineid ,sname names, stype typesymp, NoofCases caseno, medicines medname,monthvalue mv,listagg(drugnames, '; ') within group (order by drugnames) over (partition by medicineid) as tlist from sym)) 
-select names as "Symptoms",typesymp as "Symptom Type", caseno as "Total No of Cases", 
-(CASE 
- WHEN mv IN (3,4,5) THEN 'Spring' 
- WHEN mv IN (6,7,8) THEN 'Summer' 
- WHEN mv IN (9,10,11) THEN 'Autumn' 
- ELSE 'Winter' 
-END) as Seasons,medname as "Medicine Name", tlist as "Drugs" from drugdetail 
-order by caseno desc
+(SELECT * FROM (SELECT s.name sname, s.type stype, count(c.caseid) NoofCases,  
+ 
+extract (month from c.datetime) monthvalue, m.medicineid medicineid,m.productname medicines, md.drugs drugnames  
+ 
+FROM symptoms s  
+ 
+    JOIN case_symptoms cs ON cs.symptomid = s.symptomid  
+ 
+    JOIN case_details c ON c.caseid = cs.caseid  
+ 
+    JOIN prescriptions p ON c.caseid = p.caseid  
+ 
+    JOIN drug_details dd ON p.prescriptionid = dd.prescriptiionid  
+ 
+    JOIN medicines m ON m.medicineid = dd.medicineid  
+ 
+    JOIN medicine_drugs md ON m.medicineid = md.medicineid  
+ 
+WHERE s.type NOT IN ('Psychiatric')  
+ 
+GROUP BY s.name, s.type, extract(month from c.datetime), m.productname, m.medicineid, md.drugs)),  
+  
+lagg AS (select * from (select distinct(md.medicineid) medid, listagg(drugs, '; ') within group (order by drugs) over (partition by md.medicineid) as tlist   
+ 
+FROM medicine_drugs md))  
+ 
+SELECT d.sname as "Symptom Name", d.stype as "Symptom Type", d.NoofCases as "No of Cases", d.medicines as "Medicine", l.tlist as "Drugs list",   
+ 
+(CASE  
+ 
+     WHEN d.monthvalue IN (3,4,5) THEN 'Spring'  
+ 
+     WHEN d.monthvalue IN (6,7,8) THEN 'Summer'  
+ 
+     WHEN d.monthvalue IN (9,10,11) THEN 'Autumn'  
+ 
+     ELSE 'Winter'  
+ 
+END) as "Season"  
+ 
+FROM lagg l   
+ 
+JOIN casenum d ON l.medid = d.medicineid  
+ 
+WHERE d.NoofCases >= 2
