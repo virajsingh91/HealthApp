@@ -29,11 +29,13 @@ public class CheckAppointment extends HttpServlet{
 	        String appDate = request.getParameter("appDate");
 	        request.setAttribute("appDate", appDate);
 	        session.setAttribute("appDate", appDate);
-	        SimpleDateFormat dateTime1 = new SimpleDateFormat("dd-MMM-yyyy");
+	        SimpleDateFormat dateTime1 = new SimpleDateFormat("dd-MMM-yy");
 			Date dateobj1 = new Date();
 			String current = dateTime1.format(dateobj1);
 			System.out.println(dateTime1.format(dateobj1));
+			current = current.toUpperCase();
 			session.setAttribute("appDate", current);
+			current = current.toUpperCase();
 	        
 			int i=0;
 			String [][] timeslots = new String [100][100];
@@ -51,14 +53,16 @@ public class CheckAppointment extends HttpServlet{
     				"and a.endtime is null ) " + 
     				"order by s.starttime,s.endtime";*/
     		
-    		query = "WITH s AS \r\n" + 
+    		query = "WITH s AS " + 
     				"(SELECT * FROM (SELECT starttime, endtime FROM appointment_slots_new)) " + 
-    				"SELECT to_char(cast(s.starttime as date),'hh24:mi:ss') as timeslotstarttime, " + 
-    				"to_char(cast(s.endtime as date),'hh24:mi:ss') as timeslotendtime " + 
+    				
+    				"SELECT to_char(cast(s.starttime as date),'hh12:mi:ss') as timeslotstarttime, " + 
+    				"to_char(cast(s.endtime as date),'hh12:mi:ss') as timeslotendtime , to_char(cast(a.appdate as date),'DD-MON-YY') ,a.doctorid " + 
     				"FROM s " + 
-    				"LEFT OUTER join appointments_new a on a.starttime = s.starttime " + 
-    				"WHERE a.doctorid = "+ spec + " " + 
-    				"AND appdate != '" + current + "' " + " OR ( a.starttime is null AND a.endtime is null ) " + 
+    				"LEFT OUTER join appointments_new a on to_char(cast(a.starttime as date),'hh12:mi:ss') = to_char(cast(s.starttime as date),'hh12:mi:ss') " + 
+    				"WHERE (a.doctorid = "+ spec + " " +
+    				"AND to_char(cast(a.appdate as date),'DD-MON-YY') != '" + current + "' )" +  
+    				"OR ( a.starttime is null AND a.endtime is null ) " + 
     				"ORDER BY s.starttime,s.endtime ";
     		PreparedStatement stmt = con.prepareStatement(query);
     		System.out.println("Query :" + query);

@@ -41,6 +41,7 @@ public class CaseHistory extends HttpServlet{
     				"left outer join lab_tests lt on pl.testid = lt.testid " + 
     				"where cd.patientid = '" + pid + "' " + 
     				"order by cd.caseid";
+    		System.out.println("querycase : "+ query1);
 			PreparedStatement stmt1 = con.prepareStatement(query1);
 			ResultSet rs1 = stmt1.executeQuery(query1);
 			while(rs1.next()){

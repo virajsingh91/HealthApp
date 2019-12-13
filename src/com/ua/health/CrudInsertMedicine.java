@@ -37,12 +37,12 @@ public class CrudInsertMedicine extends HttpServlet {
 		stmt3.setString(7, phone);	
 		stmt3.setString(8, email);
 		stmt3.execute();
-		text="<p style=\"color:green\">Record Inserted Successfully for Case </p>";
+		text="<p style=\"color:green\">Record Inserted Successfully </p>";
 		
 	}catch (SQLException e) {
         // TODO Auto-generated catch block
         e.printStackTrace();
-        text="<p style=\"color:red\">Record Insertion Failed</p>";
+       text="<p style=\"color:red\">Record Insertion Failed</p>";
 }	
 	request.setAttribute("text", text);
 	request.getRequestDispatcher("FormMedicine.jsp").forward(request, response);

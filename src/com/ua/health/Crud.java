@@ -21,7 +21,7 @@ public class Crud extends HttpServlet {
             HttpServletResponse response) throws ServletException, IOException {
 		String Crud = request.getParameter("Crud");
 		//filePath= System.getenv("UAHealthAppQueryPath");
-		String filename = "C:\\Users\\bitsplease\\Downloads\\sqlQueries\\Crudquery" + Crud + ".txt";
+		String filename = "C:\\Users\\Romy\\eclipse-workspace\\HealthApp\\sqlQueries\\Crudquery" + Crud + ".txt";
 		//C:\Users\Romy\eclipse-workspace\HealthApp\sqlQueries
 		//C:\\Users\\bitsplease\\Downloads\\sqlQueries\\Crudquery
 		String query="";
@@ -74,7 +74,7 @@ public class Crud extends HttpServlet {
 				output[i][k] = rs1.getString(k+1);
 				if (k==0) {
 				//tbody = tbody + "<td contenteditable='true' name=\"ID\" value =" + output[i][k] + ">" + output[i][k] +"</td>" ;
-					tbody = tbody + "<td><input disabled type=\"text\" name=\"ID\" value=" + output[i][k] + "></td>" ;
+					tbody = tbody + "<td><input type=\"text\" name=\"ID\" value=\"" + output[i][k] + "\" ></td>" ;
 	            //System.out.println("output : " + output[i][k]);
 				}else {
 					tbody = tbody + "<td>" + output[i][k] + "</td>" ;
