@@ -1,0 +1,16 @@
+WITH x AS ( 
+SELECT p.caseid cid, di.icdcode as "ICD CODE",dd.medicineid as medid,p.pharmacyid as pid, ph.pharmacyname as "Pharmacy Name" 
+FROM drug_details dd 
+JOIN prescriptions p 
+    ON dd.prescriptiionid = p.prescriptionid 
+JOIN pharmacies ph 
+    ON ph.pharmacyid = p.pharmacyid 
+JOIN diagnosis_details di 
+    ON di.caseid = p.caseid  
+) 
+SELECT  distinct("ICD CODE"), medid, 
+listagg(p.pharmacyname, '; ') within group (order by p.pharmacyname) over (partition by x.medid) as tlist 
+FROM pharmacies p  
+JOIN x ON x.pid = p.pharmacyid 
+GROUP BY "ICD CODE", medid, p.pharmacyname,x.medid 
+ORDER BY x.medid

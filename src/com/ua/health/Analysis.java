@@ -55,7 +55,7 @@ public class Analysis extends HttpServlet {
 			text="<p style=\"color:blaclk\"><b>Pharmacy Medicine Availability</b></p><br>";
 			
 		}else if (runAnalysis.equals("10")) {
-			text="<p style=\"color:blaclk\"><b>Time vs Symptom Statistics</b></p><br>";
+			text="<p style=\"color:blaclk\"><b>Time | Symptom | Trip Details - Statistics</b></p><br>";
 			
 		}
 		
