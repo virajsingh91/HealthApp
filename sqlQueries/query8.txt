@@ -1,0 +1,45 @@
+WITH Student_Name AS 
+( 
+SELECT unique(p.patientID) "Patient ID",  
+s.Firstname || ' ' || s.middleinitial || ' ' || s.lastname as "Patient Name" 
+FROM students S  
+JOIN patients p on p.studentid = s.studentid 
+LEFT OUTER JOIN case_details cd on p.patientid = cd.patientid 
+), 
+ 
+Case_count AS  
+( 
+SELECT sum(bd.total_cost) "Total Cost", count(bd.caseid) "No of Cases", cd.patientid "Patid" 
+FROM billing_details bd 
+LEFT OUTER JOIN case_details cd on cd.caseid = bd.caseid 
+GROUP BY cd.patientid 
+), 
+ 
+App_count AS 
+( 
+SELECT count(appointmentid) "Appointment Count", 
+patientid 
+FROM appointments  
+GROUP BY patientid 
+), 
+ 
+Amb_req AS 
+( 
+SELECT count(td.caseid) "Ambulance Count", cd.patientid "Patid" 
+FROM trip_details td  
+JOIN case_details cd on cd.caseid = td.caseid 
+GROUP BY cd.patientid 
+) 
+  
+SELECT "Patient ID", "Patient Name", Coalesce("No of Cases",0) "Total No of Cases",  
+Coalesce("Total Cost",0) "Total Bill Amount",  
+Coalesce("Appointment Count",0) "No of Appointments Booked", 
+Coalesce("Ambulance Count",0) "No of Times Ambulance Sent" 
+ 
+from student_name 
+LEFT OUTER JOIN Case_count ON student_name."Patient ID" = Case_count."Patid" 
+LEFT OUTER JOIN App_count ON  student_name."Patient ID" = App_count.patientid 
+LEFT OUTER JOIN Amb_req ON student_name."Patient ID" = Amb_req."Patid" 
+ 
+WHERE Coalesce("No of Cases",0) <> 0 or Coalesce("Appointment Count",0) <> 0 or Coalesce("Ambulance Count",0) <> 0 
+ORDER BY "Patient ID"

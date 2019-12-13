@@ -185,6 +185,7 @@ margin-left: 38%;
     <option value=5>Diagnosis Insured</option>
     <option value=6>Diagnosis Appropriateness</option>
     <option value=7>Student Subsidy Eligibility</option>
+    <option value=8>Patient Historical Statistics</option>
 <!--     <option value=8>Query8</option>
     <option value=9>Query9</option> -->
  

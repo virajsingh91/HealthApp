@@ -33,6 +33,7 @@ public class CheckAppointment extends HttpServlet{
 			Date dateobj1 = new Date();
 			String current = dateTime1.format(dateobj1);
 			System.out.println(dateTime1.format(dateobj1));
+			session.setAttribute("appDate", current);
 	        
 			int i=0;
 			String [][] timeslots = new String [100][100];
@@ -41,14 +42,24 @@ public class CheckAppointment extends HttpServlet{
     		Connection con;
     		con = c.JDBCConnection();
     		
-    		query = "With s as (select * from (select starttime, endtime from appointment_time_slots)) " + 
+    		/*query = "With s as (select * from (select starttime, endtime from appointment_time_slots)) " + 
     				"select s.starttime as timeslotstarttime,s.endtime as timeslotendtime, a.appdate,a.doctorid from s left outer join appointments a " + 
     				"on a.starttime = s.starttime " + 
     				"where a.doctorid = "+ spec + " " + 
     				"and appdate != '" + current + "' " + 
     				"or( a.starttime is null " + 
     				"and a.endtime is null ) " + 
-    				"order by s.starttime,s.endtime";
+    				"order by s.starttime,s.endtime";*/
+    		
+    		query = "WITH s AS \r\n" + 
+    				"(SELECT * FROM (SELECT starttime, endtime FROM appointment_slots_new)) " + 
+    				"SELECT to_char(cast(s.starttime as date),'hh24:mi:ss') as timeslotstarttime, " + 
+    				"to_char(cast(s.endtime as date),'hh24:mi:ss') as timeslotendtime " + 
+    				"FROM s " + 
+    				"LEFT OUTER join appointments_new a on a.starttime = s.starttime " + 
+    				"WHERE a.doctorid = "+ spec + " " + 
+    				"AND appdate != '" + current + "' " + " OR ( a.starttime is null AND a.endtime is null ) " + 
+    				"ORDER BY s.starttime,s.endtime ";
     		PreparedStatement stmt = con.prepareStatement(query);
     		System.out.println("Query :" + query);
     		ResultSet rs = stmt.executeQuery(query);

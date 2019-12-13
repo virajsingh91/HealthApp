@@ -63,7 +63,7 @@ public class GetSpecializations extends HttpServlet{
 		 		 session.setAttribute("speclength",i);
 	             i=0;
 	           //Get Booked appointments list
-		    		query1 = "Select a.appdate , a.starttime, a.endtime , e.firstname, e.middleinitial , e.lastname from appointments a join doctors d on  a.doctorid=d.doctorid join employees e on e.employeeid = d.doctorid where patientid= " + pid + "";
+		    		query1 = "Select a.appdate , a.starttime, a.endtime , e.firstname, e.middleinitial , e.lastname from appointments_new a join doctors d on  a.doctorid=d.doctorid join employees e on e.employeeid = d.doctorid where patientid= " + pid + "";
 		    		PreparedStatement stmt1 = con.prepareStatement(query1);
 		    		System.out.println("Query :" + query1);
 		    		ResultSet rs1 = stmt1.executeQuery(query1);
@@ -85,7 +85,8 @@ public class GetSpecializations extends HttpServlet{
 	             con.close();
 	             request.setAttribute("applength",i);
 	 			request.setAttribute("app",app);
-	 			
+	 			session.setAttribute("applength", i);
+		 		 session.setAttribute("app",app);
 	 			
 	 			
 			} catch (SQLException e) {
