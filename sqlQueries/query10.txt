@@ -1,9 +1,16 @@
-SELECT extract (year from (to_date(to_char(cd.datetime,'dd-MON-yyyy')))) as "Year", s.name as "Symptom Name",  
-count(cd.caseid) as "No of Cases", sum(cd.duration_min) as "Total Duration",  
-to_char(Avg(cd.duration_min),'999.99') as "Average Duration", count(tripid) as "No of Trips"  
-FROM symptoms s  
-    JOIN case_symptoms cs ON s.symptomid = cs.symptomid 
-    JOIN case_details cd ON cd.caseid = cs.caseid 
-    LEFT OUTER JOIN trip_details td ON td.caseid = cd.caseid 
-GROUP BY s.name,extract (year from (to_date(to_char(cd.datetime,'dd-MON-yyyy')))) 
-ORDER BY extract (year from (to_date(to_char(cd.datetime,'dd-MON-yyyy'))))
+WITH x AS (  
+SELECT p.caseid cid, di.icdcode as "ICD CODE",dd.medicineid as medid,p.pharmacyid as pid, ph.pharmacyname as "Pharmacy Name"  
+FROM drug_details dd  
+JOIN prescriptions p  
+    ON dd.prescriptiionid = p.prescriptionid  
+JOIN pharmacies ph  
+    ON ph.pharmacyid = p.pharmacyid  
+JOIN diagnosis_details di  
+    ON di.caseid = p.caseid   
+)  
+SELECT  distinct("ICD CODE") as "ICD Code Diagnosed", medid as "Medicine Name",  
+listagg(p.pharmacyname, '; ') within group (order by p.pharmacyname) over (partition by x.medid) as "Pharmacy List"  
+FROM pharmacies p   
+JOIN x ON x.pid = p.pharmacyid  
+GROUP BY "ICD CODE", medid, p.pharmacyname,x.medid  
+ORDER BY medid
